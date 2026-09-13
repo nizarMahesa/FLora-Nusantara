@@ -67,8 +67,8 @@ function renderKatalogLengkap(list = dataTanaman) {
   const container = document.getElementById('grid-katalog-lengkap');
   if(!container) return;
   
-  // Mengatur grid tata letak rapi dari kiri ke kanan (kolom otomatis menyesuaikan ukuran layar)
-  container.style.cssText = "display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; align-items: stretch;";
+  // Memaksa penataan grid dari kiri ke kanan dengan !important agar berjejer rapi
+  container.style.cssText = "display: grid !important; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important; gap: 20px !important; width: 100% !important;";
   
   container.innerHTML = '';
   list.forEach(t => {
