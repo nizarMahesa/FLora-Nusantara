@@ -62,22 +62,54 @@ function renderUnggulan() {
   });
 }
 
-// 2. Render Katalog Lengkap (50 Tanaman)
+// 2. Render Katalog Lengkap (Halaman Katalog Umum)
 function renderKatalogLengkap(list = dataTanaman) {
   const container = document.getElementById('grid-katalog-lengkap');
   if(!container) return;
+  
+  // Ubah judul header katalog agar berbeda dengan halaman kategori
+  const headerKatalog = document.getElementById('judul-halaman-katalog');
+  if(headerKatalog) {
+    headerKatalog.innerHTML = `<h2>Katalog Seluruh Tanaman Obat (${list.length} Item)</h2><p style="color:#718096; font-size:0.9rem;">Daftar lengkap ensiklopedia flora obat tradisional asli Indonesia.</p>`;
+  }
+
   container.innerHTML = '';
   list.forEach(t => {
     container.appendChild(buatKartuTanaman(t));
   });
 }
 
-// Helper: Komponen Kartu dengan Background Ikon & Watermark Estetik
+// 2b. Render Khusus Halaman Kategori / Filter Manfaat
+function renderHalamanKategori(tipeFilter, nilaiFilter, list) {
+  const container = document.getElementById('grid-katalog-lengkap');
+  const headerKatalog = document.getElementById('judul-halaman-katalog');
+  if(!container) return;
+
+  if(headerKatalog) {
+    headerKatalog.innerHTML = `
+      <div style="background: #ebf8ff; border-left: 4px solid #3182ce; padding: 12px 16px; border-radius: 4px; margin-bottom: 15px;">
+        <h2 style="margin: 0; color: #2b6cb0; font-size: 1.2rem;">Hasil Filter ${tipeFilter}: "${nilaiFilter}"</h2>
+        <p style="margin: 4px 0 0 0; color: #4a5568; font-size: 0.9rem;">Menampilkan ${list.length} tanaman obat spesifik untuk kategori ini.</p>
+      </div>
+    `;
+  }
+
+  container.innerHTML = '';
+  if(list.length === 0) {
+    container.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: #a0aec0; padding: 40px;">Tidak ditemukan tanaman untuk kategori ini.</p>`;
+    return;
+  }
+  
+  list.forEach(t => {
+    container.appendChild(buatKartuTanaman(t));
+  });
+}
+
+// Helper: Komponen Kartu dengan Tata Letak Nama & Label yang Rapih (Flexbox)
 function buatKartuTanaman(t) {
   const card = document.createElement('div');
   card.className = 'card-flora';
 
-  // Tentukan ikon background berdasarkan kategori jenis tanaman
   let ikonJenis = "🌿";
   if (t.jenis === "Rimpang") ikonJenis = "🫚";
   if (t.jenis === "Buah") ikonJenis = "🍋";
@@ -118,18 +150,19 @@ function buatKartuTanaman(t) {
     </div>
 
     <div style="position: relative; z-index: 1;">
-      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
-        <h3 style="margin: 0; font-size: 1.1rem; color: #2d3748;">${t.id}. ${t.nama}</h3>
-        <span style="font-size: 0.75rem; background: #edf2f7; color: #4a5568; padding: 2px 8px; border-radius: 12px; font-weight: 500; display: flex; align-items: center; gap: 4px;">
+      <!-- Perbaikan Tata Letak: Flexbox sejajar vertikal & wrap agar nama panjang tidak berantakan -->
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 6px;">
+        <h3 style="margin: 0; font-size: 1.05rem; color: #2d3748; line-height: 1.3; flex: 1;">${t.id}. ${t.nama}</h3>
+        <span style="font-size: 0.75rem; background: #edf2f7; color: #4a5568; padding: 3px 8px; border-radius: 12px; font-weight: 500; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;">
           ${ikonJenis} ${t.jenis}
         </span>
       </div>
       <p style="margin: 0 0 10px 0; font-style: italic; font-size: 0.85rem; color: #718096;">${t.latin}</p>
-      <p style="margin: 0; font-size: 0.9rem; color: #4a5568; line-height: 1.4;"><b>Khasiat:</b> ${t.khasiat.length > 75 ? t.khasiat.substring(0, 75) + '...' : t.khasiat}</p>
+      <p style="margin: 0; font-size: 0.9rem; color: #4a5568; line-height: 1.4;"><b>Khasiat:</b> ${t.khasiat.length > 70 ? t.khasiat.substring(0, 70) + '...' : t.khasiat}</p>
     </div>
 
     <div style="position: relative; z-index: 1; margin-top: 12px; padding-top: 8px; border-top: 1px dashed #edf2f7; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem;">
-      <span style="color: #718096; background: #f7fafc; padding: 2px 6px; border-radius: 4px;">Indikasi: ${t.keluhan}</span>
+      <span style="color: #718096; background: #f7fafc; padding: 2px 6px; border-radius: 4px;">Indikasi: <b>${t.keluhan}</b></span>
       <span style="color: #3182ce; font-weight: 600;">Lihat Detail &rarr;</span>
     </div>
   `;
@@ -142,9 +175,9 @@ function bukaHalaman(namaHalaman) {
   
   if (namaHalaman === 'beranda') {
     document.getElementById('halaman-beranda').classList.remove('hidden');
-  } else if (namaHalaman === 'katalog' || namaHalaman === 'kategori') {
+  } else if (namaHalaman === 'katalog') {
     document.getElementById('halaman-katalog').classList.remove('hidden');
-    renderKatalogLengkap();
+    renderKatalogLengkap(dataTanaman);
   } else if (namaHalaman === 'artikel') {
     document.getElementById('halaman-artikel').classList.remove('hidden');
   } else if (namaHalaman === 'tentang') {
@@ -152,17 +185,17 @@ function bukaHalaman(namaHalaman) {
   }
 }
 
-// 4. Fitur Filter & Pencarian Aktif
+// 4. Fitur Filter & Pencarian Aktif (Sekarang Menghasilkan Konten Berbeda)
 function filterKategori(jenis) {
   bukaHalaman('katalog');
-  const hasil = dataTanaman.filter(t => t.jenis.toLowerCase().includes(jenis.toLowerCase()));
-  renderKatalogLengkap(hasil);
+  const hasil = dataTanaman.filter(t => t.jenis.toLowerCase() === jenis.toLowerCase());
+  renderHalamanKategori("Jenis Tanaman", jenis, hasil);
 }
 
 function filterKeluhan(keluhan) {
   bukaHalaman('katalog');
-  const hasil = dataTanaman.filter(t => t.keluhan.toLowerCase().includes(keluhan.toLowerCase()));
-  renderKatalogLengkap(hasil);
+  const hasil = dataTanaman.filter(t => t.keluhan.toLowerCase() === keluhan.toLowerCase());
+  renderHalamanKategori("Keluhan & Manfaat", keluhan, hasil);
 }
 
 function cariTanamanHero() {
@@ -186,7 +219,7 @@ function cariTanamanKatalog() {
     t.jenis.toLowerCase().includes(q) ||
     t.keluhan.toLowerCase().includes(q)
   );
-  renderKatalogLengkap(hasil);
+  renderHalamanKategori("Pencarian Kata Kunci", q, hasil);
 }
 
 // 5. Modal Detail Tanaman Terstruktur
