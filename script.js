@@ -12,11 +12,11 @@ const dataTanaman = [
   { id: 10, nama: "Bunga Telang", latin: "Clitoria ternatea", jenis: "Buah", keluhan: "Imun", kandungan: "Antosianin, antioksidan tinggi", khasiat: "Meredakan stres & memelihara kesehatan mata.", pengolahan: "Seduh 5 kuntum bunga telang kering dengan air panas.", peringatan: "Konsumsi secukupnya, hindari saat kehamilan." }
 ];
 
-// Generate sisa data hingga 50 untuk melengkapi katalog
+// Generate sisa data hingga 50 (Sudah dikoreksi variabel 'i')
 for (let i = 11; i <= 50; i++) {
   dataTanaman.push({
     id: i,
-    nama: `Tanaman Herbal Herbal #${i}`,
+    nama: `Tanaman Herbal #${i}`,
     latin: `Flora species var. ${i}`,
     jenis: i % 2 === 0 ? "Daun" : (i % 3 === 0 ? "Rimpang" : "Buah"),
     keluhan: i % 2 === 0 ? "Imun" : (i % 3 === 0 ? "Pencernaan" : "Kulit"),
@@ -145,5 +145,5 @@ function tutupModal() {
   document.getElementById('modalDetail').classList.add('hidden');
 }
 
-// Inisialisasi awal
+// Inisialisasi awal saat script dimuat
 renderUnggulan();
