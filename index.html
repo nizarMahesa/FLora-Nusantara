@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FloraNusantara - Portal Informasi & Encylopedia Tanaman Obat Indonesia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Navbar Utama -->
+    <header class="navbar">
+        <div class="logo-area">
+            <h1>FloraNusantara</h1>
+            <span>Portal Informasi Herbal Indonesia</span>
+        </div>
+        <nav class="nav-links">
+            <a href="#beranda">Beranda</a>
+            <a href="#tentang">Tentang Portal</a>
+            <a href="#katalog">Katalog Herbal</a>
+            <a href="#tabel-data">Data Khasiat</a>
+            <a href="#multimedia">Video Panduan</a>
+            <a href="#kontak">Kontribusi</a>
+        </nav>
+    </header>
+
+    <!-- Hero Banner -->
+    <section id="beranda" class="hero">
+        <div class="hero-overlay">
+            <h2>Pusat Informasi & Edukasi Tanaman Obat Tradisional</h2>
+            <p>Dokumentasi digital kekayaan hayati herbal Nusantara untuk kesehatan generasi mendatang.</p>
+            <a href="#katalog" class="btn-primary">Jelajahi Katalog</a>
+        </div>
+    </section>
+
+    <!-- Layout Utama (Content + Sidebar) -->
+    <div class="main-layout">
+        
+        <!-- Konten Utama -->
+        <main class="content-area">
+            
+            <section id="tentang" class="section-block">
+                <h2 class="section-heading">Tentang FloraNusantara</h2>
+                <p>FloraNusantara merupakan platform edukasi berbasis web yang mengompilasi data tanaman obat tradisional Indonesia. Platform ini dirancang untuk mempermudah masyarakat dalam mengidentifikasi jenis tanaman herbal, memahami kandungan ilmiah, serta mempelajari metode pengolahan yang aman.</p>
+            </section>
+
+            <!-- Katalog Kartu -->
+            <section id="katalog" class="section-block">
+                <h2 class="section-heading">Katalog Tanaman Obat</h2>
+                <div class="grid-container">
+                    
+                    <article class="card">
+                        <img src="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=500&q=80" alt="Kunyit">
+                        <div class="card-body">
+                            <span class="tag">Zingiberaceae</span>
+                            <h3>Kunyit (Curcuma longa)</h3>
+                            <p>Memiliki kandungan kurkumin yang berfungsi sebagai antiinflamasi dan antioksidan kuat.</p>
+                            <hr>
+                            <small><b>Pengolahan:</b> Rebusan rimpang / Ekstrak cair</small>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=500&q=80" alt="Jahe">
+                        <div class="card-body">
+                            <span class="tag">Zingiberaceae</span>
+                            <h3>Jahe (Zingiber officinale)</h3>
+                            <p>Kaya akan gingerol yang efektif meredakan gangguan pernapasan dan pencernaan.</p>
+                            <hr>
+                            <small><b>Pengolahan:</b> Seduhan air panas / Wedang</small>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80" alt="Temulawak">
+                        <div class="card-body">
+                            <span class="tag">Zingiberaceae</span>
+                            <h3>Temulawak (Curcuma zanthorrhiza)</h3>
+                            <p>Berfungsi menjaga organ hati (hepatoprotektor) dan merangsang nafsu makan alami.</p>
+                            <hr>
+                            <small><b>Pengolahan:</b> Rebusan bersama asam jawa</small>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- Tabel Data Formal -->
+            <section id="tabel-data" class="section-block">
+                <h2 class="section-heading">Ringkasan Klasifikasi & Khasiat</h2>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama Lokal</th>
+                                <th>Nama Latin</th>
+                                <th>Kategori Manfaat</th>
+                                <th>Status Identifikasi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Kunyit</td>
+                                <td><i>Curcuma longa</i></td>
+                                <td>Antiinflamasi & Imunitas</td>
+                                <td><span class="status-verified">Tervalidasi</span></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Jahe Merah</td>
+                                <td><i>Zingiber officinale var. rubrum</i></td>
+                                <td>Pernapasan & Demam</td>
+                                <td><span class="status-verified">Tervalidasi</span></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Temulawak</td>
+                                <td><i>Curcuma zanthorrhiza</i></td>
+                                <td>Kesehatan Hati (Hepatoprotektor)</td>
+                                <td><span class="status-verified">Tervalidasi</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Video Edukasi -->
+            <section id="multimedia" class="section-block">
+                <h2 class="section-heading">Video Panduan & Pelestarian Herbal</h2>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/7iYcJr9usMk" 
+                            title="Pelestari Tanaman Obat Nusantara - CNN Indonesia" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            </section>
+
+            <!-- Form Kontribusi -->
+            <section id="kontak" class="section-block">
+                <h2 class="section-heading">Form Pengajuan Data Tanaman</h2>
+                <form id="formKontribusi" class="formal-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="namaLengkap">Nama Lengkap Kontributor:</label>
+                            <input type="text" id="namaLengkap" placeholder="Contoh: Dr. Ahmad Subagyo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Alamat Email:</label>
+                            <input type="email" id="email" placeholder="nama@email.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="namaTanaman">Nama Tanaman Obat:</label>
+                        <input type="text" id="namaTanaman" placeholder="Masukkan nama lokal/latin..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="deskripsi">Deskripsi Khasiat & Metode Olah:</label>
+                        <textarea id="deskripsi" rows="4" placeholder="Jelaskan secara rinci..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Kirimkan Data Kontribusi</button>
+                </form>
+            </section>
+
+        </main>
+
+        <!-- Sidebar Formal -->
+        <aside class="sidebar">
+            <div class="widget">
+                <h3>Pengumuman Portal</h3>
+                <p>Pembaruan data katalog herbal edisi 2026 telah selesai diverifikasi oleh tim kurator.</p>
+            </div>
+            
+            <div class="widget">
+                <h3>Kategori Khasiat</h3>
+                <ul class="widget-list">
+                    <li><a href="#">Sistem Imunitas (12)</a></li>
+                    <li><a href="#">Pencernaan (8)</a></li>
+                    <li><a href="#">Kesehatan Kulit (5)</a></li>
+                    <li><a href="#">Pernapasan (9)</a></li>
+                </ul>
+            </div>
+
+            <div class="widget">
+                <h3>Kontak Lembaga</h3>
+                <p><b>Email:</b> info@floranusantara.id</p>
+                <p><b>Telepon:</b> (021) 555-0192</p>
+                <p><b>Lokasi:</b> Jakarta, Indonesia</p>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- Footer Formal -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>FloraNusantara</h4>
+                <p>Sistem basis data digital kekayaan tanaman obat herbal Indonesia.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigasi</h4>
+                <ul>
+                    <li><a href="#beranda">Beranda</a></li>
+                    <li><a href="#katalog">Katalog</a></li>
+                    <li><a href="#tabel-data">Tabel Data</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Lisensi & Tugas</h4>
+                <p>Tugas Pemrograman Web 1 &copy; 2026</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Hak Cipta Dilindungi Undang-Undang | FloraNusantara Project</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
