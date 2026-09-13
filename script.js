@@ -1,4 +1,4 @@
-// Database 50 Tanaman Obat Tradisional Asli Indonesia (Dengan Background Ikon & Watermark Estetik)
+// Database 50 Tanaman Obat Tradisional Asli Indonesia (Dengan Struktur Data Lengkap & Estetik)
 const dataTanaman = [
   { id: 1, nama: "Kunyit", latin: "Curcuma longa", jenis: "Rimpang", keluhan: "Pencernaan", kandungan: "Kurkumin, minyak atsiri, desmetoksikurkumin", khasiat: "Meredakan asam lambung, antiinflamasi, menjaga pencernaan.", pengolahan: "Parut 2 ruas kunyit, rebus dengan 1 gelas air hingga mendidih, saring dan minum.", peringatan: "Hindari konsumsi berlebih pada pasien batu empedu." },
   { id: 2, nama: "Jahe Merah", latin: "Zingiber officinale var. rubrum", jenis: "Rimpang", keluhan: "Imun", kandungan: "Gingerol, shogaol, zingeron", khasiat: "Menghangatkan tubuh, meredakan batuk & pegal linu.", pengolahan: "Geprek 1 ruas jahe merah, seduh dengan air panas dan madu.", peringatan: "Hati-hati bagi penderita pendarahan atau masalah lambung kronis." },
@@ -67,7 +67,11 @@ function renderKatalogLengkap(list = dataTanaman) {
   const container = document.getElementById('grid-katalog-lengkap');
   if(!container) return;
   
-  // Ubah judul header katalog agar berbeda dengan halaman kategori
+  // Mengatur tata letak kontainer grid agar tampil multi-kolom rapi (tidak hanya 2 baris ke bawah)
+  container.style.display = 'grid';
+  container.style.gridTemplateColumns = 'repeat(auto-fill, minmax(280px, 1fr))';
+  container.style.gap = '20px';
+
   const headerKatalog = document.getElementById('judul-halaman-katalog');
   if(headerKatalog) {
     headerKatalog.innerHTML = `<h2>Katalog Seluruh Tanaman Obat (${list.length} Item)</h2><p style="color:#718096; font-size:0.9rem;">Daftar lengkap ensiklopedia flora obat tradisional asli Indonesia.</p>`;
@@ -84,6 +88,10 @@ function renderHalamanKategori(tipeFilter, nilaiFilter, list) {
   const container = document.getElementById('grid-katalog-lengkap');
   const headerKatalog = document.getElementById('judul-halaman-katalog');
   if(!container) return;
+
+  container.style.display = 'grid';
+  container.style.gridTemplateColumns = 'repeat(auto-fill, minmax(280px, 1fr))';
+  container.style.gap = '20px';
 
   if(headerKatalog) {
     headerKatalog.innerHTML = `
@@ -158,11 +166,11 @@ function buatKartuTanaman(t) {
         </span>
       </div>
       <p style="margin: 0 0 10px 0; font-style: italic; font-size: 0.85rem; color: #718096;">${t.latin}</p>
-      <p style="margin: 0; font-size: 0.9rem; color: #4a5568; line-height: 1.4;"><b>Khasiat:</b> ${t.khasiat.length > 70 ? t.khasiat.substring(0, 70) + '...' : t.khasiat}</p>
+      <p style="margin: 0 0 8px 0; font-size: 0.9rem; color: #4a5568; line-height: 1.4;"><b>Khasiat:</b> ${t.khasiat.length > 70 ? t.khasiat.substring(0, 70) + '...' : t.khasiat}</p>
     </div>
 
     <div style="position: relative; z-index: 1; margin-top: 12px; padding-top: 8px; border-top: 1px dashed #edf2f7; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem;">
-      <span style="color: #718096; background: #f7fafc; padding: 2px 6px; border-radius: 4px;">Indikasi: <b>${t.keluhan}</b></span>
+      <span style="color: #718096; background: #f7fafc; padding: 2px 6px; border-radius: 4px;">Kategori: <b>${t.keluhan}</b></span>
       <span style="color: #3182ce; font-weight: 600;">Lihat Detail &rarr;</span>
     </div>
   `;
@@ -185,7 +193,7 @@ function bukaHalaman(namaHalaman) {
   }
 }
 
-// 4. Fitur Filter & Pencarian Aktif (Sekarang Menghasilkan Konten Berbeda)
+// 4. Fitur Filter & Pencarian Aktif
 function filterKategori(jenis) {
   bukaHalaman('katalog');
   const hasil = dataTanaman.filter(t => t.jenis.toLowerCase() === jenis.toLowerCase());
@@ -195,7 +203,7 @@ function filterKategori(jenis) {
 function filterKeluhan(keluhan) {
   bukaHalaman('katalog');
   const hasil = dataTanaman.filter(t => t.keluhan.toLowerCase() === keluhan.toLowerCase());
-  renderHalamanKategori("Keluhan & Manfaat", keluhan, hasil);
+  renderHalamanKategori("Manfaat & Kategori", keluhan, hasil);
 }
 
 function cariTanamanHero() {
@@ -240,8 +248,8 @@ function bukaDetail(id) {
     </div>
 
     <div style="background: #f7fafc; padding: 12px; border-radius: 6px; margin-bottom: 10px;">
-      <strong>✨ Khasiat Utama:</strong>
-      <p style="margin: 4px 0 0 0; color: #4a5568;">${t.khasiat}</p>
+      <strong>✨ Khasiat Utama & Kategori Manfaat:</strong>
+      <p style="margin: 4px 0 0 0; color: #4a5568;">${t.khasiat} (Fokus Kategori: <b>${t.keluhan}</b>)</p>
     </div>
 
     <div style="background: #f7fafc; padding: 12px; border-radius: 6px; margin-bottom: 10px;">
