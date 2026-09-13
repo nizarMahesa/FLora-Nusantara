@@ -3,49 +3,116 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flora Nusantara - Tanaman Obat Tradisional</title>
+  <title>Flora Nusantara - Khasiat Herbal Tradisional</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Header & Navigasi -->
-  <header>
-    <h1>Flora Nusantara</h1>
-    <nav>
-      <button onclick="bukaHalaman('beranda')">Beranda</button>
-      <button onclick="bukaHalaman('panduan')">Panduan Penggunaan</button>
+  <!-- 1. Header & Navigasi Utama -->
+  <header class="navbar">
+    <div class="logo">🌿 Flora Nusantara</div>
+    <nav class="nav-links">
+      <a href="#" onclick="bukaHalaman('beranda')">Beranda</a>
+      <a href="#" onclick="bukaHalaman('katalog')">Katalog Flora</a>
+      <a href="#" onclick="bukaHalaman('kategori')">Manfaat & Kategori</a>
+      <a href="#" onclick="bukaHalaman('artikel')">Artikel / Edukasi</a>
+      <a href="#" onclick="bukaHalaman('tentang')">Tentang Kami</a>
     </nav>
   </header>
 
-  <!-- Halaman 1: Beranda (Katalog Obat) -->
-  <main id="halaman-beranda" class="halaman">
-    <div class="search-box">
-      <input type="text" id="inputCari" placeholder="Cari tanaman obat..." onkeyup="cariTanaman()">
-    </div>
-    <div id="container-tanaman" class="grid-container">
-      <!-- Data 50 tanaman akan muncul di sini via JavaScript -->
-    </div>
-  </main>
+  <!-- Halaman Beranda Utama -->
+  <div id="halaman-beranda" class="halaman">
+    
+    <!-- 2. Banner Utama (Hero Section) -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1>Kembali ke Alam: Temukan Khasiat Herbal Tradisional untuk Kesehatan Anda</h1>
+        <p>Panduan terpercaya eksplorasi berbagai macam obat-obatan tradisional Nusantara.</p>
+        <div class="search-hero">
+          <input type="text" id="inputCariHero" placeholder="Ketik nama tanaman atau keluhan (misal: Kunyit, Maag, Diare)..." onkeyup="cariTanamanHero()">
+          <button onclick="bukaHalaman('katalog')">Jelajahi Tanaman</button>
+        </div>
+      </div>
+    </section>
 
-  <!-- Halaman 2: Panduan (Disembunyikan secara default) -->
-  <main id="halaman-panduan" class="halaman hidden">
-    <h2>Panduan Penggunaan Obat Tradisional</h2>
-    <p>Berikut adalah petunjuk umum dalam mengolah dan mengonsumsi herbal:</p>
-    <ul>
-      <li>Cuci bersih semua bahan sebelum diolah.</li>
-      <li>Gunakan wadah tanah jat/enamel/kaca (hindari wadah aluminium/besi).</li>
-      <li>Konsultasikan dengan tenaga medis jika memiliki riwayat penyakit kronis.</li>
-    </ul>
-  </main>
+    <!-- 3. Pencarian Cepat Berdasarkan Kategori -->
+    <section class="kategori-section container">
+      <h2>Pencarian Cepat</h2>
+      <div class="kategori-grid">
+        <div class="kategori-card" onclick="filterKategori('Daun')">🍃 Jenis: Daun</div>
+        <div class="kategori-card" onclick="filterKategori('Rimpang')">🫚 Jenis: Rimpang / Akar</div>
+        <div class="kategori-card" onclick="filterKategori('Buah')">🍋 Jenis: Buah / Bunga</div>
+        <div class="kategori-card" onclick="filterKeluhan('Pencernaan')">🩺 Keluhan: Pencernaan</div>
+        <div class="kategori-card" onclick="filterKeluhan('Imun')">🛡️ Keluhan: Daya Tahan</div>
+        <div class="kategori-card" onclick="filterKeluhan('Kulit')">✨ Keluhan: Kulit & Nyeri</div>
+      </div>
+    </section>
 
-  <!-- Modal Detail Obat (Disembunyikan secara default) -->
-  <div id="modalDetail" class="modal hidden">
-    <div class="modal-content">
-      <span class="close-btn" onclick="tutupModal()">&times;</span>
-      <div id="isiDetail"></div>
+    <!-- 4. Katalog Flora Unggulan -->
+    <section class="featured-section container">
+      <h2>Katalog Flora Unggulan</h2>
+      <div id="grid-unggulan" class="grid-katalog">
+        <!-- Kartu tanaman unggulan akan dirender lewat JS -->
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Halaman Katalog Lengkap -->
+  <div id="halaman-katalog" class="halaman hidden container">
+    <br>
+    <h2>Katalog Lengkap Obat Tradisional</h2>
+    <div class="search-bar-main">
+      <input type="text" id="inputCariKatalog" placeholder="Cari berdasarkan nama, latin, atau khasiat..." onkeyup="cariTanamanKatalog()">
+    </div>
+    <div id="grid-katalog-lengkap" class="grid-katalog">
+      <!-- 50 tanaman akan dirender di sini -->
     </div>
   </div>
 
-  <script src="script.js?v=2"></script>
+  <!-- Halaman Artikel & Edukasi -->
+  <div id="halaman-artikel" class="halaman hidden container">
+    <br>
+    <h2>6. Artikel & Edukasi Sehat Alami</h2>
+    <div class="artikel-grid">
+      <article class="artikel-card">
+        <h3>Sejarah Tradisi Jamu Nusantara</h3>
+        <p>Menelusuri jejak pengobatan herbal sejak zaman kerajaan kuno hingga menjadi warisan budaya takbenda.</p>
+      </article>
+      <article class="artikel-card">
+        <h3>Tips Merebus Herbal yang Benar</h3>
+        <p>Hindari panci alumunium! Gunakan wadah tanah liat atau kaca agar kandungan aktif herbal tidak rusak.</p>
+      </article>
+    </div>
+  </div>
+
+  <!-- Halaman Tentang Kami -->
+  <div id="halaman-tentang" class="halaman hidden container">
+    <br>
+    <h2>7. Tentang Flora Nusantara</h2>
+    <p>Flora Nusantara adalah platform edukasi independen yang bertujuan melestarikan pengetahuan kekayaan tanaman obat tradisional Indonesia secara ilmiah dan terstruktur.</p>
+  </div>
+
+  <!-- 5. Modal Detail Tanaman (Saat Kartu Di-klik) -->
+  <div id="modalDetail" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-btn" onclick="tutupModal()">&times;</span>
+      <div id="isiDetailTanaman">
+        <!-- Detail tanaman lengkap disajikan di sini -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Penafian Hukum (Disclaimer) & Footer -->
+  <footer>
+    <div class="disclaimer-box container">
+      <strong>⚠️ Penafian Hukum (Disclaimer):</strong> Informasi yang disajikan di situs ini bertujuan semata-mata untuk edukasi dan tidak dimaksudkan sebagai pengganti diagnosis, perawatan, atau saran medis dari dokter profesional.
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Flora Nusantara. All Rights Reserved. | Kebijakan Privasi | Kontak Kami</p>
+    </div>
+  </footer>
+
+  <script src="script.js?v=3"></script>
 </body>
 </html>
