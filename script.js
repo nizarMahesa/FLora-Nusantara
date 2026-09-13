@@ -243,7 +243,6 @@
     </footer>
 
     <script>
-        // Database 50 Tanaman Obat Tradisional Asli Indonesia
         const dataTanaman = [
           { id: 1, nama: "Kunyit", latin: "Curcuma longa", jenis: "Rimpang", keluhan: "Pencernaan", kandungan: "Kurkumin, minyak atsiri, desmetoksikurkumin", khasiat: "Meredakan asam lambung, antiinflamasi, menjaga pencernaan.", pengolahan: "Parut 2 ruas kunyit, rebus dengan 1 gelas air hingga mendidih, saring dan minum.", peringatan: "Hindari konsumsi berlebih pada pasien batu empedu." },
           { id: 2, nama: "Jahe Merah", latin: "Zingiber officinale var. rubrum", jenis: "Rimpang", keluhan: "Imun", kandungan: "Gingerol, shogaol, zingeron", khasiat: "Menghangatkan tubuh, meredakan batuk & pegal linu.", pengolahan: "Geprek 1 ruas jahe merah, seduh dengan air panas dan madu.", peringatan: "Hati-hati bagi penderita pendarahan atau masalah lambung kronis." },
@@ -327,8 +326,8 @@
           });
         }
 
-        // 2b. Render Khusus Halaman Kategori / Filter Manfaat
-        function renderHalamanKategori(tipeFilter, nilaiFilter, list) {
+        // 2b. Render Khusus Hasil Filter dari Halaman Kategori
+        function renderHalamanKategoriFilter(tipeFilter, nilaiFilter, list) {
           const container = document.getElementById('grid-katalog-lengkap');
           const headerKatalog = document.getElementById('judul-halaman-katalog');
           if(!container) return;
@@ -357,7 +356,7 @@
           });
         }
 
-        // Helper: Komponen Kartu dengan Tata Letak Nama & Label yang Rapih (Flexbox)
+        // Helper: Komponen Kartu Tanaman
         function buatKartuTanaman(t) {
           const card = document.createElement('div');
           card.className = 'card-flora';
@@ -396,7 +395,6 @@
           card.onclick = () => bukaDetail(t.id);
           
           card.innerHTML = `
-            <!-- Watermark Nomor ID Transparan di Sudut Bawah Belakang -->
             <div style="position: absolute; right: -8px; bottom: -12px; font-size: 4.5rem; opacity: 0.05; font-weight: bold; color: #2d3748; z-index: 0; user-select: none;">
               #${t.id}
             </div>
@@ -420,7 +418,7 @@
           return card;
         }
 
-        // 3. Fungsi Navigasi Halaman
+        // 3. Fungsi Navigasi Halaman Utama
         function bukaHalaman(namaHalaman) {
           document.querySelectorAll('.halaman').forEach(h => h.classList.add('hidden'));
           
@@ -445,7 +443,7 @@
           }
         }
 
-        // Render Isi Halaman Kategori Utama
+        // Render Halaman Menu Utama Kategori & Manfaat
         function renderHalamanKategoriUtama() {
           const container = document.getElementById('isi-halaman-kategori');
           if (!container) return;
@@ -493,17 +491,25 @@
           `;
         }
 
-        // 4. Fitur Filter & Pencarian Aktif
+        // 4. Logika Filter Berdasarkan Kategori & Manfaat
         function filterKategori(jenis) {
-          bukaHalaman('katalog');
+          // Buka section halaman katalog terlebih dahulu secara fisik
+          document.querySelectorAll('.halaman').forEach(h => h.classList.add('hidden'));
+          const elKatalog = document.getElementById('halaman-katalog');
+          if (elKatalog) elKatalog.classList.remove('hidden');
+
           const hasil = dataTanaman.filter(t => t.jenis.toLowerCase() === jenis.toLowerCase());
-          renderHalamanKategori("Jenis Tanaman", jenis, hasil);
+          renderHalamanKategoriFilter("Jenis Tanaman", jenis, hasil);
         }
 
         function filterKeluhan(keluhan) {
-          bukaHalaman('katalog');
+          // Buka section halaman katalog terlebih dahulu secara fisik
+          document.querySelectorAll('.halaman').forEach(h => h.classList.add('hidden'));
+          const elKatalog = document.getElementById('halaman-katalog');
+          if (elKatalog) elKatalog.classList.remove('hidden');
+
           const hasil = dataTanaman.filter(t => t.keluhan.toLowerCase() === keluhan.toLowerCase());
-          renderHalamanKategori("Manfaat & Kategori", keluhan, hasil);
+          renderHalamanKategoriFilter("Manfaat & Kategori", keluhan, hasil);
         }
 
         function cariTanamanHero() {
@@ -527,10 +533,10 @@
             t.jenis.toLowerCase().includes(q) ||
             t.keluhan.toLowerCase().includes(q)
           );
-          renderHalamanKategori("Pencarian Kata Kunci", q, hasil);
+          renderHalamanKategoriFilter("Pencarian Kata Kunci", q, hasil);
         }
 
-        // 5. Modal Detail Tanaman Terstruktur
+        // 5. Modal Detail Tanaman
         function bukaDetail(id) {
           const t = dataTanaman.find(item => item.id === id);
           if (!t) return;
@@ -571,7 +577,7 @@
           if (modal) modal.classList.add('hidden');
         }
 
-        // Inisialisasi awal saat script dimuat
+        // Inisialisasi awal saat dimuat
         renderUnggulan();
     </script>
 </body>
