@@ -1,128 +1,51 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FloraNusantara - Portal Informasi Tanaman Obat Indonesia</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flora Nusantara - Tanaman Obat Tradisional</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Header Navbar -->
-    <header class="navbar">
-        <div class="logo-area">
-            <h1>FloraNusantara</h1>
-            <span>Portal Informasi Herbal Indonesia</span>
-        </div>
-        <nav class="nav-links">
-            <a href="#beranda">Beranda</a>
-            <a href="#tentang">Tentang</a>
-            <a href="#katalog">Katalog Herbal</a>
-            <a href="#multimedia">Video Panduan</a>
-            <a href="#kontak">Kontribusi</a>
-        </nav>
-    </header>
+  <!-- Header & Navigasi -->
+  <header>
+    <h1>Flora Nusantara</h1>
+    <nav>
+      <button onclick="bukaHalaman('beranda')">Beranda</button>
+      <button onclick="bukaHalaman('panduan')">Panduan Penggunaan</button>
+    </nav>
+  </header>
 
-    <!-- Hero Banner (Singkat & Informatif) -->
-    <section id="beranda" class="hero">
-        <div class="hero-overlay">
-            <h2>Pusat Dokumentasi Tanaman Obat Nusantara</h2>
-            <p>Mengenal kekayaan herbal Indonesia untuk kesehatan alami. Pilih katalog di bawah untuk melihat detail panduan dan cara pengolahan.</p>
-            <a href="#katalog" class="btn-primary">Lihat Katalog Tanaman</a>
-        </div>
-    </section>
-
-    <!-- Layout Utama -->
-    <div class="main-layout">
-        <main class="content-area">
-            
-            <section id="tentang" class="section-block">
-                <h2 class="section-heading">Tentang FloraNusantara</h2>
-                <p>FloraNusantara adalah portal edukasi digital yang menghimpun pengetahuan medis tradisional berbasis bukti empiris dan ilmiah. Kami menyediakan direktori lengkap tanaman herbal yang tumbuh di tanah Indonesia beserta panduan penggunaannya.</p>
-            </section>
-
-            <!-- Katalog Kartu Ringkas -->
-            <section id="katalog" class="section-block">
-                <h2 class="section-heading">Katalog & Panduan Tanaman Obat</h2>
-                <p class="section-sub">Klik salah satu tanaman untuk melihat detail khasiat, kandungan, dan panduan pengolahannya.</p>
-                
-                <div class="grid-container" id="katalogGrid">
-                    <!-- Data Tanaman Akan Dimuat oleh JavaScript -->
-                </div>
-            </section>
-
-            <!-- Video Edukasi -->
-            <section id="multimedia" class="section-block">
-                <h2 class="section-heading">Video Panduan & Pelestarian Herbal</h2>
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/7iYcJr9usMk" 
-                            title="Pelestari Tanaman Obat Nusantara - CNN Indonesia" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                    </iframe>
-                </div>
-            </section>
-
-            <!-- Form Kontribusi -->
-            <section id="kontak" class="section-block">
-                <h2 class="section-heading">Form Pengajuan Data Tanaman</h2>
-                <form id="formKontribusi" class="formal-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="namaLengkap">Nama Lengkap Kontributor:</label>
-                            <input type="text" id="namaLengkap" placeholder="Contoh: Dr. Ahmad Subagyo" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Alamat Email:</label>
-                            <input type="email" id="email" placeholder="nama@email.com" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="namaTanaman">Nama Tanaman Obat:</label>
-                        <input type="text" id="namaTanaman" placeholder="Masukkan nama tanaman..." required>
-                    </div>
-                    <div class="form-group">
-                        <label for="deskripsi">Deskripsi Khasiat & Metode Olah:</label>
-                        <textarea id="deskripsi" rows="4" placeholder="Jelaskan secara rinci..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit">Kirimkan Data Kontribusi</button>
-                </form>
-            </section>
-
-        </main>
-
-        <!-- Sidebar Formal -->
-        <aside class="sidebar">
-            <div class="widget">
-                <h3>Pengumuman Portal</h3>
-                <p>Pembaruan katalog edisi 2026 menyajikan 6 jenis tanaman herbal pilihan beserta panduan olahnya.</p>
-            </div>
-            <div class="widget">
-                <h3>Kontak Lembaga</h3>
-                <p><b>Email:</b> info@floranusantara.id</p>
-                <p><b>Telepon:</b> (021) 555-0192</p>
-                <p><b>Lokasi:</b> Jakarta, Indonesia</p>
-            </div>
-        </aside>
+  <!-- Halaman 1: Beranda (Katalog Obat) -->
+  <main id="halaman-beranda" class="halaman">
+    <div class="search-box">
+      <input type="text" id="inputCari" placeholder="Cari tanaman obat..." onkeyup="cariTanaman()">
     </div>
-
-    <!-- MODAL POP-UP DETAIL TANAMAN -->
-    <div id="plantModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <div id="modalBody">
-                <!-- Isi Pop-up Dimuat Secara Dinamis -->
-            </div>
-        </div>
+    <div id="container-tanaman" class="grid-container">
+      <!-- Data 50 tanaman akan muncul di sini via JavaScript -->
     </div>
+  </main>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-bottom">
-            <p>Hak Cipta Dilindungi Undang-Undang | FloraNusantara Project &copy; 2026</p>
-        </div>
-    </footer>
+  <!-- Halaman 2: Panduan (Disembunyikan secara default) -->
+  <main id="halaman-panduan" class="halaman hidden">
+    <h2>Panduan Penggunaan Obat Tradisional</h2>
+    <p>Berikut adalah petunjuk umum dalam mengolah dan mengonsumsi herbal:</p>
+    <ul>
+      <li>Cuci bersih semua bahan sebelum diolah.</li>
+      <li>Gunakan wadah tanah jat/enamel/kaca (hindari wadah aluminium/besi).</li>
+      <li>Konsultasikan dengan tenaga medis jika memiliki riwayat penyakit kronis.</li>
+    </ul>
+  </main>
 
-    <script src="script.js"></script>
+  <!-- Modal Detail Obat (Disembunyikan secara default) -->
+  <div id="modalDetail" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-btn" onclick="tutupModal()">&times;</span>
+      <div id="isiDetail"></div>
+    </div>
+  </div>
+
+  <script src="script.js?v=2"></script>
 </body>
 </html>
