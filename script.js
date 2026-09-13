@@ -62,10 +62,14 @@ function renderUnggulan() {
   });
 }
 
-// 2. Render Katalog Lengkap (50 Tanaman)
+// 2. Render Katalog Lengkap (50 Tanaman) dengan Tata Letak Kolom Rapih (Kiri ke Kanan)
 function renderKatalogLengkap(list = dataTanaman) {
   const container = document.getElementById('grid-katalog-lengkap');
   if(!container) return;
+  
+  // Mengatur grid tata letak rapi dari kiri ke kanan (kolom otomatis menyesuaikan ukuran layar)
+  container.style.cssText = "display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; align-items: stretch;";
+  
   container.innerHTML = '';
   list.forEach(t => {
     container.appendChild(buatKartuTanaman(t));
