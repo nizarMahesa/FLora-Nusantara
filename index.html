@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FloraNusantara - Portal Informasi & Encylopedia Tanaman Obat Indonesia</title>
+    <title>FloraNusantara - Portal Informasi Tanaman Obat Indonesia</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Header / Navbar Utama -->
+    <!-- Header Navbar -->
     <header class="navbar">
         <div class="logo-area">
             <h1>FloraNusantara</h1>
@@ -16,113 +16,38 @@
         </div>
         <nav class="nav-links">
             <a href="#beranda">Beranda</a>
-            <a href="#tentang">Tentang Portal</a>
+            <a href="#tentang">Tentang</a>
             <a href="#katalog">Katalog Herbal</a>
-            <a href="#tabel-data">Data Khasiat</a>
             <a href="#multimedia">Video Panduan</a>
             <a href="#kontak">Kontribusi</a>
         </nav>
     </header>
 
-    <!-- Hero Banner -->
+    <!-- Hero Banner (Singkat & Informatif) -->
     <section id="beranda" class="hero">
         <div class="hero-overlay">
-            <h2>Pusat Informasi & Edukasi Tanaman Obat Tradisional</h2>
-            <p>Dokumentasi digital kekayaan hayati herbal Nusantara untuk kesehatan generasi mendatang.</p>
-            <a href="#katalog" class="btn-primary">Jelajahi Katalog</a>
+            <h2>Pusat Dokumentasi Tanaman Obat Nusantara</h2>
+            <p>Mengenal kekayaan herbal Indonesia untuk kesehatan alami. Pilih katalog di bawah untuk melihat detail panduan dan cara pengolahan.</p>
+            <a href="#katalog" class="btn-primary">Lihat Katalog Tanaman</a>
         </div>
     </section>
 
-    <!-- Layout Utama (Content + Sidebar) -->
+    <!-- Layout Utama -->
     <div class="main-layout">
-        
-        <!-- Konten Utama -->
         <main class="content-area">
             
             <section id="tentang" class="section-block">
                 <h2 class="section-heading">Tentang FloraNusantara</h2>
-                <p>FloraNusantara merupakan platform edukasi berbasis web yang mengompilasi data tanaman obat tradisional Indonesia. Platform ini dirancang untuk mempermudah masyarakat dalam mengidentifikasi jenis tanaman herbal, memahami kandungan ilmiah, serta mempelajari metode pengolahan yang aman.</p>
+                <p>FloraNusantara adalah portal edukasi digital yang menghimpun pengetahuan medis tradisional berbasis bukti empiris dan ilmiah. Kami menyediakan direktori lengkap tanaman herbal yang tumbuh di tanah Indonesia beserta panduan penggunaannya.</p>
             </section>
 
-            <!-- Katalog Kartu -->
+            <!-- Katalog Kartu Ringkas -->
             <section id="katalog" class="section-block">
-                <h2 class="section-heading">Katalog Tanaman Obat</h2>
-                <div class="grid-container">
-                    
-                    <article class="card">
-                        <img src="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=500&q=80" alt="Kunyit">
-                        <div class="card-body">
-                            <span class="tag">Zingiberaceae</span>
-                            <h3>Kunyit (Curcuma longa)</h3>
-                            <p>Memiliki kandungan kurkumin yang berfungsi sebagai antiinflamasi dan antioksidan kuat.</p>
-                            <hr>
-                            <small><b>Pengolahan:</b> Rebusan rimpang / Ekstrak cair</small>
-                        </div>
-                    </article>
-
-                    <article class="card">
-                        <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=500&q=80" alt="Jahe">
-                        <div class="card-body">
-                            <span class="tag">Zingiberaceae</span>
-                            <h3>Jahe (Zingiber officinale)</h3>
-                            <p>Kaya akan gingerol yang efektif meredakan gangguan pernapasan dan pencernaan.</p>
-                            <hr>
-                            <small><b>Pengolahan:</b> Seduhan air panas / Wedang</small>
-                        </div>
-                    </article>
-
-                    <article class="card">
-                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80" alt="Temulawak">
-                        <div class="card-body">
-                            <span class="tag">Zingiberaceae</span>
-                            <h3>Temulawak (Curcuma zanthorrhiza)</h3>
-                            <p>Berfungsi menjaga organ hati (hepatoprotektor) dan merangsang nafsu makan alami.</p>
-                            <hr>
-                            <small><b>Pengolahan:</b> Rebusan bersama asam jawa</small>
-                        </div>
-                    </article>
-
-                </div>
-            </section>
-
-            <!-- Tabel Data Formal -->
-            <section id="tabel-data" class="section-block">
-                <h2 class="section-heading">Ringkasan Klasifikasi & Khasiat</h2>
-                <div class="table-responsive">
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Lokal</th>
-                                <th>Nama Latin</th>
-                                <th>Kategori Manfaat</th>
-                                <th>Status Identifikasi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Kunyit</td>
-                                <td><i>Curcuma longa</i></td>
-                                <td>Antiinflamasi & Imunitas</td>
-                                <td><span class="status-verified">Tervalidasi</span></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Jahe Merah</td>
-                                <td><i>Zingiber officinale var. rubrum</i></td>
-                                <td>Pernapasan & Demam</td>
-                                <td><span class="status-verified">Tervalidasi</span></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Temulawak</td>
-                                <td><i>Curcuma zanthorrhiza</i></td>
-                                <td>Kesehatan Hati (Hepatoprotektor)</td>
-                                <td><span class="status-verified">Tervalidasi</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <h2 class="section-heading">Katalog & Panduan Tanaman Obat</h2>
+                <p class="section-sub">Klik salah satu tanaman untuk melihat detail khasiat, kandungan, dan panduan pengolahannya.</p>
+                
+                <div class="grid-container" id="katalogGrid">
+                    <!-- Data Tanaman Akan Dimuat oleh JavaScript -->
                 </div>
             </section>
 
@@ -154,7 +79,7 @@
                     </div>
                     <div class="form-group">
                         <label for="namaTanaman">Nama Tanaman Obat:</label>
-                        <input type="text" id="namaTanaman" placeholder="Masukkan nama lokal/latin..." required>
+                        <input type="text" id="namaTanaman" placeholder="Masukkan nama tanaman..." required>
                     </div>
                     <div class="form-group">
                         <label for="deskripsi">Deskripsi Khasiat & Metode Olah:</label>
@@ -170,19 +95,8 @@
         <aside class="sidebar">
             <div class="widget">
                 <h3>Pengumuman Portal</h3>
-                <p>Pembaruan data katalog herbal edisi 2026 telah selesai diverifikasi oleh tim kurator.</p>
+                <p>Pembaruan katalog edisi 2026 menyajikan 6 jenis tanaman herbal pilihan beserta panduan olahnya.</p>
             </div>
-            
-            <div class="widget">
-                <h3>Kategori Khasiat</h3>
-                <ul class="widget-list">
-                    <li><a href="#">Sistem Imunitas (12)</a></li>
-                    <li><a href="#">Pencernaan (8)</a></li>
-                    <li><a href="#">Kesehatan Kulit (5)</a></li>
-                    <li><a href="#">Pernapasan (9)</a></li>
-                </ul>
-            </div>
-
             <div class="widget">
                 <h3>Kontak Lembaga</h3>
                 <p><b>Email:</b> info@floranusantara.id</p>
@@ -190,31 +104,22 @@
                 <p><b>Lokasi:</b> Jakarta, Indonesia</p>
             </div>
         </aside>
-
     </div>
 
-    <!-- Footer Formal -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-col">
-                <h4>FloraNusantara</h4>
-                <p>Sistem basis data digital kekayaan tanaman obat herbal Indonesia.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Navigasi</h4>
-                <ul>
-                    <li><a href="#beranda">Beranda</a></li>
-                    <li><a href="#katalog">Katalog</a></li>
-                    <li><a href="#tabel-data">Tabel Data</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Lisensi & Tugas</h4>
-                <p>Tugas Pemrograman Web 1 &copy; 2026</p>
+    <!-- MODAL POP-UP DETAIL TANAMAN -->
+    <div id="plantModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div id="modalBody">
+                <!-- Isi Pop-up Dimuat Secara Dinamis -->
             </div>
         </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
         <div class="footer-bottom">
-            <p>Hak Cipta Dilindungi Undang-Undang | FloraNusantara Project</p>
+            <p>Hak Cipta Dilindungi Undang-Undang | FloraNusantara Project &copy; 2026</p>
         </div>
     </footer>
 
