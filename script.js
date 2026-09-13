@@ -1,4 +1,4 @@
-// Database 50 Tanaman Obat Tradisional Asli Indonesia (Dengan Background Ikon & Watermark Estetik)
+// Database 50 Tanaman Obat Tradisional Asli Indonesia (Tanpa Gambar, Tata Letak Kolom Rapih)
 const dataTanaman = [
   { id: 1, nama: "Kunyit", latin: "Curcuma longa", jenis: "Rimpang", keluhan: "Pencernaan", kandungan: "Kurkumin, minyak atsiri, desmetoksikurkumin", khasiat: "Meredakan asam lambung, antiinflamasi, menjaga pencernaan.", pengolahan: "Parut 2 ruas kunyit, rebus dengan 1 gelas air hingga mendidih, saring dan minum.", peringatan: "Hindari konsumsi berlebih pada pasien batu empedu." },
   { id: 2, nama: "Jahe Merah", latin: "Zingiber officinale var. rubrum", jenis: "Rimpang", keluhan: "Imun", kandungan: "Gingerol, shogaol, zingeron", khasiat: "Menghangatkan tubuh, meredakan batuk & pegal linu.", pengolahan: "Geprek 1 ruas jahe merah, seduh dengan air panas dan madu.", peringatan: "Hati-hati bagi penderita pendarahan atau masalah lambung kronis." },
@@ -72,65 +72,34 @@ function renderKatalogLengkap(list = dataTanaman) {
   });
 }
 
-// Helper: Komponen Kartu dengan Background Ikon & Watermark Estetik
+// Helper: Komponen Kartu Tanpa Gambar dengan Tata Letak Kolom Rapih
 function buatKartuTanaman(t) {
   const card = document.createElement('div');
   card.className = 'card-flora';
-
-  // Tentukan ikon background berdasarkan kategori jenis tanaman
-  let ikonJenis = "🌿";
-  if (t.jenis === "Rimpang") ikonJenis = "🫚";
-  if (t.jenis === "Buah") ikonJenis = "🍋";
-
-  card.style.cssText = `
-    background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
-    border: 1px solid #e2e8f0;
-    border-top: 4px solid #3182ce;
-    border-radius: 10px;
-    padding: 18px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-  `;
+  card.style.cssText = "background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 18px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; justify-content: space-between;";
   
   card.onmouseover = () => {
     card.style.transform = "translateY(-3px)";
-    card.style.boxShadow = "0 8px 16px rgba(0,0,0,0.08)";
-    card.style.borderColor = "#3182ce";
+    card.style.boxShadow = "0 6px 12px rgba(0,0,0,0.08)";
   };
   card.onmouseout = () => {
     card.style.transform = "translateY(0)";
     card.style.boxShadow = "0 2px 4px rgba(0,0,0,0.02)";
-    card.style.borderColor = "#e2e8f0";
   };
 
   card.onclick = () => bukaDetail(t.id);
   
   card.innerHTML = `
-    <!-- Watermark Nomor ID Transparan di Sudut Bawah Belakang -->
-    <div style="position: absolute; right: -8px; bottom: -12px; font-size: 4.5rem; opacity: 0.05; font-weight: bold; color: #2d3748; z-index: 0; user-select: none;">
-      #${t.id}
-    </div>
-
-    <div style="position: relative; z-index: 1;">
+    <div>
       <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
         <h3 style="margin: 0; font-size: 1.1rem; color: #2d3748;">${t.id}. ${t.nama}</h3>
-        <span style="font-size: 0.75rem; background: #edf2f7; color: #4a5568; padding: 2px 8px; border-radius: 12px; font-weight: 500; display: flex; align-items: center; gap: 4px;">
-          ${ikonJenis} ${t.jenis}
-        </span>
+        <span style="font-size: 0.75rem; background: #edf2f7; color: #4a5568; padding: 2px 8px; border-radius: 12px; font-weight: 500;">${t.jenis}</span>
       </div>
       <p style="margin: 0 0 10px 0; font-style: italic; font-size: 0.85rem; color: #718096;">${t.latin}</p>
       <p style="margin: 0; font-size: 0.9rem; color: #4a5568; line-height: 1.4;"><b>Khasiat:</b> ${t.khasiat.length > 75 ? t.khasiat.substring(0, 75) + '...' : t.khasiat}</p>
     </div>
-
-    <div style="position: relative; z-index: 1; margin-top: 12px; padding-top: 8px; border-top: 1px dashed #edf2f7; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem;">
-      <span style="color: #718096; background: #f7fafc; padding: 2px 6px; border-radius: 4px;">Indikasi: ${t.keluhan}</span>
-      <span style="color: #3182ce; font-weight: 600;">Lihat Detail &rarr;</span>
+    <div style="margin-top: 12px; padding-top: 8px; border-top: 1px dashed #edf2f7; font-size: 0.8rem; color: #3182ce; font-weight: 600;">
+      Lihat Detail &rarr;
     </div>
   `;
   return card;
@@ -152,7 +121,7 @@ function bukaHalaman(namaHalaman) {
   }
 }
 
-// 4. Fitur Filter & Pencarian Aktif
+// 4. Fitur Filter & Pencarian
 function filterKategori(jenis) {
   bukaHalaman('katalog');
   const hasil = dataTanaman.filter(t => t.jenis.toLowerCase().includes(jenis.toLowerCase()));
@@ -166,25 +135,18 @@ function filterKeluhan(keluhan) {
 }
 
 function cariTanamanHero() {
-  const inputEl = document.getElementById('inputCariHero');
-  if (!inputEl) return;
-  const q = inputEl.value.toLowerCase();
+  const q = document.getElementById('inputCariHero').value.toLowerCase();
   bukaHalaman('katalog');
-  const inputKatalog = document.getElementById('inputCariKatalog');
-  if (inputKatalog) inputKatalog.value = q;
+  document.getElementById('inputCariKatalog').value = q;
   cariTanamanKatalog();
 }
 
 function cariTanamanKatalog() {
-  const inputEl = document.getElementById('inputCariKatalog');
-  if (!inputEl) return;
-  const q = inputEl.value.toLowerCase();
+  const q = document.getElementById('inputCariKatalog').value.toLowerCase();
   const hasil = dataTanaman.filter(t => 
     t.nama.toLowerCase().includes(q) || 
     t.latin.toLowerCase().includes(q) ||
-    t.khasiat.toLowerCase().includes(q) ||
-    t.jenis.toLowerCase().includes(q) ||
-    t.keluhan.toLowerCase().includes(q)
+    t.khasiat.toLowerCase().includes(q)
   );
   renderKatalogLengkap(hasil);
 }
@@ -195,8 +157,6 @@ function bukaDetail(id) {
   if (!t) return;
   
   const isi = document.getElementById('isiDetailTanaman');
-  if (!isi) return;
-  
   isi.innerHTML = `
     <h2 style="margin-top:0; color: #2d3748;">${t.nama}</h2>
     <p style="font-style: italic; color: #718096; margin-top: -5px;">${t.latin} • <span style="color:#3182ce;">${t.jenis}</span></p>
@@ -221,13 +181,11 @@ function bukaDetail(id) {
       <p style="margin: 4px 0 0 0; color: #742a2a;">${t.peringatan}</p>
     </div>
   `;
-  const modal = document.getElementById('modalDetail');
-  if (modal) modal.classList.remove('hidden');
+  document.getElementById('modalDetail').classList.remove('hidden');
 }
 
 function tutupModal() {
-  const modal = document.getElementById('modalDetail');
-  if (modal) modal.classList.add('hidden');
+  document.getElementById('modalDetail').classList.add('hidden');
 }
 
 // Inisialisasi awal saat script dimuat
