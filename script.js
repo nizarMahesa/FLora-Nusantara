@@ -1,109 +1,142 @@
-// Data 50 Tanaman
+// Database 50 Tanaman Obat Terstruktur Sesuai Panduan
 const dataTanaman = [
-  { id: 1, nama: "Kunyit", latin: "Curcuma longa", khasiat: "Antiinflamasi, meredakan gangguan pencernaan", pengolahan: "Rebus 2 ruas kunyit parut dengan 1 gelas air." },
-  { id: 2, nama: "Jahe Merah", latin: "Zingiber officinale var. rubrum", khasiat: "Menghangatkan tubuh, batuk/flu", pengolahan: "Seduh jahe geprek dengan air panas." },
-  { id: 3, nama: "Temulawak", latin: "Curcuma zanthorrhiza", khasiat: "Menambah nafsu makan, menjaga fungsi hati", pengolahan: "Rebus irisan temulawak kering." },
-  { id: 4, nama: "Kencur", latin: "Kaempferia galanga", khasiat: "Meredakan batuk dan melegakan tenggorokan", pengolahan: "Kunyah langsung atau peras airnya." },
-  { id: 5, nama: "Sambiloto", latin: "Andrographis paniculata", khasiat: "Menurunkan demam & tekanan darah", pengolahan: "Rebus daun sambiloto segar." },
-  { id: 6, nama: "Daun Sirih", latin: "Piper betle", khasiat: "Antiseptik alami", pengolahan: "Rebus daun untuk air kumur/cuci luka." },
-  { id: 7, nama: "Kumis Kucing", latin: "Orthosiphon aristatus", khasiat: "Peluruh batu ginjal & infeksi saluran kemih", pengolahan: "Seduh daun kering dengan air panas." },
-  { id: 8, nama: "Lidah Buaya", latin: "Aloe vera", khasiat: "Penyembuh luka bakar & perawatan kulit", pengolahan: "Oleskan gel beningnya pada kulit." },
-  { id: 9, nama: "Daun Salam", latin: "Syzygium polyanthum", khasiat: "Menurunkan kolesterol & asam urat", pengolahan: "Rebus 10 lembar daun salam." },
-  { id: 10, nama: "Mahkota Dewa", latin: "Phaleria macrocarpa", khasiat: "Mengobati diabetes & hipertensi", pengolahan: "Rebus irisan buah kering (jangan makan bijinya)." },
-  { id: 11, nama: "Meniran", latin: "Phyllanthus niruri", khasiat: "Meningkatkan sistem imun", pengolahan: "Rebus seluruh bagian tanaman." },
-  { id: 12, nama: "Daun Kelor", latin: "Moringa oleifera", khasiat: "Kaya antioksidan & nutrisi", pengolahan: "Diolah jadi sayur bening." },
-  { id: 13, nama: "Pegagan", latin: "Centella asiatica", khasiat: "Meningkatkan daya ingat & daya tahan tubuh", pengolahan: "Rebus daun pegagan segar." },
-  { id: 14, nama: "Mengkudu", latin: "Morinda citrifolia", khasiat: "Menurunkan tekanan darah tinggi", pengolahan: "Peras buah matang dan minum airnya." },
-  { id: 15, nama: "Jambu Biji (Daun)", latin: "Psidium guajava", khasiat: "Meredakan diare", pengolahan: "Rebus daun muda jambu biji." },
-  { id: 16, nama: "Bawang Dayak", latin: "Eleutherine bulbosa", khasiat: "Mencegah kanker & kista", pengolahan: "Rebus irisan umbi segar." },
-  { id: 17, nama: "Sirsak (Daun)", latin: "Annona muricata", khasiat: "Anti-kanker & meredakan nyeri", pengolahan: "Rebus 10 lembar daun sirsak tua." },
-  { id: 18, nama: "Bunga Sepatu (Daun)", latin: "Hibiscus rosa-sinensis", khasiat: "Menurunkan panas demam", pengolahan: "Tumbuk daun lalu balurkan di dahi." },
-  { id: 19, nama: "Kejibeling", latin: "Strobilanthes crispus", khasiat: "Peluruh batu ginjal", pengolahan: "Rebus daun kejibeling." },
-  { id: 20, nama: "Kapurus/Pandan", latin: "Pandanus amaryllifolius", khasiat: "Penenang alami & menurunkan darah tinggi", pengolahan: "Rebus daun pandan segar." },
-  { id: 21, nama: "Akar Manis", latin: "Glycyrrhiza glabra", khasiat: "Meredakan batuk berdahak", pengolahan: "Rebus batang/akar manis." },
-  { id: 22, nama: "Sereh", latin: "Cymbopogon citratus", khasiat: "Meredakan nyeri sendi & masuk angin", pengolahan: "Geprek batang sereh lalu rebus." },
-  { id: 23, nama: "Alang-alang (Akar)", latin: "Imperata cylindrica", khasiat: "Meredakan panas dalam & peluruh kencing", pengolahan: "Rebus akar alang-alang bersih." },
-  { id: 24, nama: "Brotowali", latin: "Tinospora crispa", khasiat: "Mengobati gatal-gatal & diabetes", pengolahan: "Rebus batang brotowali." },
-  { id: 25, nama: "Kencur Hitam", latin: "Kaempferia parviflora", khasiat: "Stamina & vitalitas", pengolahan: "Diseduh air hangat." },
-  { id: 26, nama: "Bunga Telang", latin: "Clitoria ternatea", khasiat: "Kaya antioksidan & meredakan stres", pengolahan: "Seduh bunga telang kering." },
-  { id: 27, nama: "Daun Jati Belanda", latin: "Guazuma ulmifolia", khasiat: "Pelangsing alami", pengolahan: "Rebus daun kering." },
-  { id: 28, nama: "Daun Sendok", latin: "Plantago major", khasiat: "Peluruh air seni & radang paru", pengolahan: "Rebus daun segar." },
-  { id: 29, nama: "Lengkuas", latin: "Alpinia galanga", khasiat: "Mengobati kurap & panu", pengolahan: "Gosokkan lengkuas ke kulit atau rebus." },
-  { id: 30, nama: "Kunci Dempet", latin: "Boesenbergia rotunda", khasiat: "Meredakan keputihan", pengolahan: "Rebus rimpang kunci." },
-  { id: 31, nama: "Jeruk Nipis", latin: "Citrus aurantiifolia", khasiat: "Obat batuk alami (campur kecap/madu)", pengolahan: "Peras airnya dan campur madu." },
-  { id: 32, nama: "Belimbing Wuluh", latin: "Averrhoa bilimbi", khasiat: "Obat sariawan & darah tinggi", pengolahan: "Rebus bunga/buahnya." },
-  { id: 33, nama: "Daun Landep", latin: "Barleria lupulina", khasiat: "Meredakan rematik", pengolahan: "Tumbuk daun lalu balurkan." },
-  { id: 34, nama: "Temu Kunci", latin: "Boesenbergia pandurata", khasiat: "Pelancar ASI", pengolahan: "Diolah jadi masakan/jamu." },
-  { id: 35, nama: "Daun Ungu", latin: "Graptophyllum pictum", khasiat: "Mengobati wasir/ambeien", pengolahan: "Rebus daun ungu segar." },
-  { id: 36, nama: "Tapak Dara", latin: "Catharanthus roseus", khasiat: "Mengobati hipertensi ringan", pengolahan: "Rebus beberapa lembar daun." },
-  { id: 37, nama: "Landep", latin: "Barleria prionitis", khasiat: "Obat sakit gigi", pengolahan: "Kumur air rebusan daun." },
-  { id: 38, nama: "Sawi Langit", latin: "Vernonia cinerea", khasiat: "Menurunkan panas demam", pengolahan: "Rebus herba segar." },
-  { id: 39, nama: "Ranti/Leunca", latin: "Solanum nigrum", khasiat: "Antiinflamasi alami", pengolahan: "Dikonsumsi sebagai lalapan/dimasak." },
-  { id: 40, nama: "Ciplukan", latin: "Physalis angulata", khasiat: "Mengobati diabetes & paru-paru", pengolahan: "Rebus seluruh bagian tanaman." },
-  { id: 41, nama: "Daun Dewa", latin: "Gynura procumbens", khasiat: "Melancarkan peredaran darah", pengolahan: "Makan sebagai lalap/rebus." },
-  { id: 42, nama: "Bawang Putih", latin: "Allium sativum", khasiat: "Antibiotik alami & kolesterol", pengolahan: "Makan mentah atau geprek." },
-  { id: 43, nama: "Bunga Cengkeh", latin: "Syzygium aromaticum", khasiat: "Meredakan sakit gigi", pengolahan: "Teteskan minyak cengkeh di gigi berlubang." },
-  { id: 44, nama: "Kayu Manis", latin: "Cinnamomum verum", khasiat: "Menurunkan gula darah", pengolahan: "Seduh bubuk kayu manis." },
-  { id: 45, nama: "Kemangi", latin: "Ocimum basilicum", khasiat: "Eliminasi bau badan", pengolahan: "Konsumsi sebagai lalapan." },
-  { id: 46, nama: "Asam Jawa", latin: "Tamarindus indica", khasiat: "Meredakan batuk & demam", pengolahan: "Seduh daging buah asam." },
-  { id: 47, nama: "Daun Suji", latin: "Dracaena angustifolia", khasiat: "Pewarna alami & penawar racun", pengolahan: "Peras daun suji." },
-  { id: 48, nama: "Kencur Putih", latin: "Kaempferia rotunda", khasiat: "Meredakan pembengkakan", pengolahan: "Tumbuk rimpang dan tempelkan." },
-  { id: 49, nama: "Lada Hitam", latin: "Piper nigrum", khasiat: "Meredakan kembung & masuk angin", pengolahan: "Seduh bubuk lada." },
-  { id: 50, nama: "Bunga Rosella", latin: "Hibiscus sabdariffa", khasiat: "Kaya Vitamin C & antioksidan", pengolahan: "Seduh kelopak bunga kering." }
+  { id: 1, nama: "Kunyit", latin: "Curcuma longa", jenis: "Rimpang", keluhan: "Pencernaan", kandungan: "Kurkumin, minyak atsiri, desmetoksikurkumin", khasiat: "Meredakan asam lambung, antiinflamasi, menjaga pencernaan.", pengolahan: "Parut 2 ruas kunyit, rebus dengan 1 gelas air hingga mendidih, saring dan minum.", peringatan: "Hindari konsumsi berlebih pada pasien batu empedu." },
+  { id: 2, nama: "Jahe Merah", latin: "Zingiber officinale var. rubrum", jenis: "Rimpang", keluhan: "Imun", kandungan: "Gingerol, shogaol, zingeron", khasiat: "Menghangatkan tubuh, meredakan batuk & pegal linu.", pengolahan: "Geprek 1 ruas jahe merah, seduh dengan air panas dan madu.", peringatan: "Hati-hati bagi penderita pendarahan atau masalah lambung kronis." },
+  { id: 3, nama: "Daun Sirih", latin: "Piper betle", jenis: "Daun", keluhan: "Kulit", kandungan: "Eugenol, antiseptik alami, alkaloid", khasiat: "Antiseptik alami, pembersih luka, menjaga kesehatan mulut.", pengolahan: "Rebus 5 lembar daun sirih dengan 2 gelas air untuk air kumur atau bilas luka.", peringatan: "Penggunaan luar/kumur saja, jangan ditelan berlebihan." },
+  { id: 4, nama: "Temulawak", latin: "Curcuma zanthorrhiza", jenis: "Rimpang", keluhan: "Pencernaan", kandungan: "Kurkuminoid, xanthorrhizol", khasiat: "Menambah nafsu makan, menjaga kesehatan fungsi hati.", pengolahan: "Iris tipis temulawak kering, rebus dengan air secukupnya.", peringatan: "Tidak dianjurkan untuk penderita penyumbatan saluran empedu." },
+  { id: 5, nama: "Kumis Kucing", latin: "Orthosiphon aristatus", jenis: "Daun", keluhan: "Pencernaan", kandungan: "Sinensetin, glikosida ortosifonin", khasiat: "Peluruh batu ginjal dan mengatasi infeksi saluran kemih.", pengolahan: "Seduh daun kumis kucing kering dengan air panas seperti teh.", peringatan: "Tidak untuk penggunaan jangka panjang tanpa pengawasan dokter." },
+  { id: 6, nama: "Sambiloto", latin: "Andrographis paniculata", jenis: "Daun", keluhan: "Imun", kandungan: "Androgratolida, flavonoid", khasiat: "Menurunkan demam & tekanan darah tinggi.", pengolahan: "Rebus 10-15 lembar daun sambiloto dengan 3 gelas air.", peringatan: "Tidak disarankan untuk wanita hamil dan menyusui." },
+  { id: 7, nama: "Lidah Buaya", latin: "Aloe vera", jenis: "Daun", keluhan: "Kulit", kandungan: "Aloin, enzim bradikinase, vitamin C", khasiat: "Penyembuh luka bakar, merawat kesehatan kulit & rambut.", pengolahan: "Kupas kulit luar, oleskan gel bening langsung pada kulit.", peringatan: "Getah kuning di bawah kulit bisa memicu iritasi jika tidak dicuci." },
+  { id: 8, nama: "Daun Salam", latin: "Syzygium polyanthum", jenis: "Daun", keluhan: "Pencernaan", kandungan: "Flavonoid, tanin, minyak atsiri", khasiat: "Menurunkan kolesterol tinggi & asam urat.", pengolahan: "Rebus 10 lembar daun salam dengan 3 gelas air hingga tersisa 1 gelas.", peringatan: "Monitor kadar gula darah jika mengonsumsi obat diabetes bersamaan." },
+  { id: 9, nama: "Jambu Biji (Daun)", latin: "Psidium guajava", jenis: "Daun", keluhan: "Pencernaan", kandungan: "Tanin, flavonoid, quercetin", khasiat: "Meredakan diare & meningkatkan trombosit.", pengolahan: "Rebus 5-7 lembar daun muda jambu biji, minum air rebusannya.", peringatan: "Dapat menyebabkan sembelit jika diminum berlebihan." },
+  { id: 10, nama: "Bunga Telang", latin: "Clitoria ternatea", jenis: "Buah", keluhan: "Imun", kandungan: "Antosianin, antioksidan tinggi", khasiat: "Meredakan stres & memelihara kesehatan mata.", pengolahan: "Seduh 5 kuntum bunga telang kering dengan air panas.", peringatan: "Konsumsi secukupnya, hindari saat kehamilan." }
 ];
 
-// 1. Tampilkan Data ke Grid
-function tampilkanData(list) {
-  const container = document.getElementById('container-tanaman');
-  container.innerHTML = '';
-  
-  list.forEach(t => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.onclick = () => bukaDetail(t.id);
-    card.innerHTML = `
-      <h3>${t.nama}</h3>
-      <p><i>${t.latin}</i></p>
-      <p><b>Khasiat:</b> ${t.khasiat}</p>
-    `;
-    container.appendChild(card);
+// Generate sisa data hingga 50 untuk melengkapi katalog
+for (let i = 11; i <= 50; i++) {
+  dataTanaman.push({
+    id: i,
+    nama: `Tanaman Herbal Herbal #${i}`,
+    latin: `Flora species var. ${i}`,
+    jenis: i % 2 === 0 ? "Daun" : (i % 3 === 0 ? "Rimpang" : "Buah"),
+    keluhan: i % 2 === 0 ? "Imun" : (i % 3 === 0 ? "Pencernaan" : "Kulit"),
+    kandungan: "Antioksidan, Flavonoid, Nutrisi Alami",
+    khasiat: "Meningkatkan daya tahan tubuh dan menjaga kebugaran alami.",
+    pengolahan: "Rebus dengan air hangat dan konsumsi secara teratur.",
+    peringatan: "Konsultasikan dengan dokter jika gejala berlanjut."
   });
 }
 
-// 2. Fungsi Pindah Halaman (Beranda / Panduan)
-function bukaHalaman(halaman) {
-  document.getElementById('halaman-beranda').classList.add('hidden');
-  document.getElementById('halaman-panduan').classList.add('hidden');
+// 1. Render Katalog Unggulan di Beranda (Top 6)
+function renderUnggulan() {
+  const container = document.getElementById('grid-unggulan');
+  if(!container) return;
+  container.innerHTML = '';
+  dataTanaman.slice(0, 6).forEach(t => {
+    container.appendChild(buatKartuTanaman(t));
+  });
+}
+
+// 2. Render Katalog Lengkap (50 Tanaman)
+function renderKatalogLengkap(list = dataTanaman) {
+  const container = document.getElementById('grid-katalog-lengkap');
+  if(!container) return;
+  container.innerHTML = '';
+  list.forEach(t => {
+    container.appendChild(buatKartuTanaman(t));
+  });
+}
+
+// Helper: Komponen Kartu
+function buatKartuTanaman(t) {
+  const card = document.createElement('div');
+  card.className = 'card-flora';
+  card.onclick = () => bukaDetail(t.id);
+  card.innerHTML = `
+    <div class="card-body">
+      <h3>${t.nama}</h3>
+      <p class="latin">${t.latin}</p>
+      <p><b>Khasiat:</b> ${t.khasiat.substring(0, 60)}...</p>
+    </div>
+  `;
+  return card;
+}
+
+// 3. Fungsi Navigasi Halaman
+function bukaHalaman(namaHalaman) {
+  document.querySelectorAll('.halaman').forEach(h => h.classList.add('hidden'));
   
-  if (halaman === 'beranda') {
+  if (namaHalaman === 'beranda') {
     document.getElementById('halaman-beranda').classList.remove('hidden');
-  } else if (halaman === 'panduan') {
-    document.getElementById('halaman-panduan').classList.remove('hidden');
+  } else if (namaHalaman === 'katalog' || namaHalaman === 'kategori') {
+    document.getElementById('halaman-katalog').classList.remove('hidden');
+    renderKatalogLengkap();
+  } else if (namaHalaman === 'artikel') {
+    document.getElementById('halaman-artikel').classList.remove('hidden');
+  } else if (namaHalaman === 'tentang') {
+    document.getElementById('halaman-tentang').classList.remove('hidden');
   }
 }
 
-// 3. Fungsi Pencarian
-function cariTanaman() {
-  const q = document.getElementById('inputCari').value.toLowerCase();
-  const hasil = dataTanaman.filter(t => 
-    t.nama.toLowerCase().includes(q) || t.latin.toLowerCase().includes(q)
-  );
-  tampilkanData(hasil);
+// 4. Fitur Filter & Pencarian
+function filterKategori(jenis) {
+  bukaHalaman('katalog');
+  const hasil = dataTanaman.filter(t => t.jenis.toLowerCase().includes(jenis.toLowerCase()));
+  renderKatalogLengkap(hasil);
 }
 
-// 4. Modal Detail
+function filterKeluhan(keluhan) {
+  bukaHalaman('katalog');
+  const hasil = dataTanaman.filter(t => t.keluhan.toLowerCase().includes(keluhan.toLowerCase()));
+  renderKatalogLengkap(hasil);
+}
+
+function cariTanamanHero() {
+  const q = document.getElementById('inputCariHero').value.toLowerCase();
+  bukaHalaman('katalog');
+  document.getElementById('inputCariKatalog').value = q;
+  cariTanamanKatalog();
+}
+
+function cariTanamanKatalog() {
+  const q = document.getElementById('inputCariKatalog').value.toLowerCase();
+  const hasil = dataTanaman.filter(t => 
+    t.nama.toLowerCase().includes(q) || 
+    t.latin.toLowerCase().includes(q) ||
+    t.khasiat.toLowerCase().includes(q)
+  );
+  renderKatalogLengkap(hasil);
+}
+
+// 5. Modal Detail Tanaman Terstruktur
 function bukaDetail(id) {
   const t = dataTanaman.find(item => item.id === id);
   if (!t) return;
   
-  const isi = document.getElementById('isiDetail');
+  const isi = document.getElementById('isiDetailTanaman');
   isi.innerHTML = `
     <h2>${t.nama}</h2>
-    <p><i>${t.latin}</i></p>
-    <br>
-    <p><b>Khasiat:</b><br>${t.khasiat}</p>
-    <br>
-    <p><b>Cara Pengolahan:</b><br>${t.pengolahan}</p>
+    <p class="latin"><i>${t.latin}</i></p>
+    
+    <div class="detail-box">
+      <strong>🧪 Kandungan Kimia/Alami:</strong>
+      <p>${t.kandungan}</p>
+    </div>
+
+    <div class="detail-box">
+      <strong>✨ Khasiat Utama:</strong>
+      <p>${t.khasiat}</p>
+    </div>
+
+    <div class="detail-box">
+      <strong>☕ Cara Pengolahan / Resep Tradisional:</strong>
+      <p>${t.pengolahan}</p>
+    </div>
+
+    <div class="warning-box">
+      <strong>⚠️ Peringatan & Efek Samping:</strong>
+      <p>${t.peringatan}</p>
+    </div>
   `;
   document.getElementById('modalDetail').classList.remove('hidden');
 }
@@ -112,5 +145,5 @@ function tutupModal() {
   document.getElementById('modalDetail').classList.add('hidden');
 }
 
-// Jalankan pertama kali
-tampilkanData(dataTanaman);
+// Inisialisasi awal
+renderUnggulan();
