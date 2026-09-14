@@ -1,15 +1,132 @@
-/* 4. Grid Kartu Katalog (Diperbarui agar urut dari kiri ke kanan) */
-.grid-katalog {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Memaksa tepat 2 kolom berdampingan */
-  gap: 20px;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Responsif untuk layar HP/Mobile agar otomatis jadi 1 kolom */
-@media (max-width: 768px) {
-  .grid-katalog {
-    grid-template-columns: 1fr;
-  }
+body {
+  background-color: #f9fbf9;
+  color: #2c3e50;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* 1. Header / Navbar */
+.navbar {
+  background-color: #1b4332;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  sticky: top;
+}
+
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links a {
+  color: #d8f3dc;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+}
+
+/* 2. Hero Section */
+.hero-section {
+  background: linear-gradient(rgba(27, 67, 50, 0.85), rgba(45, 106, 79, 0.85)), 
+              url('https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1200&q=80') center/cover;
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+}
+
+.search-hero {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.search-hero input {
+  width: 60%;
+  max-width: 500px;
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+.search-hero button {
+  padding: 12px 25px;
+  border-radius: 25px;
+  border: none;
+  background-color: #52b788;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* 3. Kategori Section */
+.kategori-section h2, .featured-section h2 {
+  margin-bottom: 20px;
+  color: #1b4332;
+}
+
+.kategori-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+}
+
+.kategori-card {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.kategori-card:hover {
+  background: #d8f3dc;
+  transform: translateY(-3px);
+}
+
+/* 4. Grid Kartu Katalog */
+.grid-katalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
 }
 
 .card-flora {
@@ -40,4 +157,88 @@
   color: #718096;
   font-size: 0.9rem;
   margin-bottom: 10px;
+}
+
+/* 5. Modal Detail */
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 650px;
+  width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px; right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.detail-box {
+  margin-top: 15px;
+  background: #f4f6f8;
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.warning-box {
+  background: #fff5f5;
+  border-left: 4px solid #e53e3e;
+  padding: 10px;
+  margin-top: 15px;
+  color: #c53030;
+}
+
+/* 6 & 7. Artikel & Footer */
+.artikel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.artikel-card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+footer {
+  margin-top: auto;
+  background-color: #081c15;
+  color: #95d5b2;
+}
+
+.disclaimer-box {
+  font-size: 0.85rem;
+  border-bottom: 1px solid #1b4332;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9rem;
+}
+
+.search-bar-main input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
