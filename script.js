@@ -109,33 +109,58 @@ function buatKartuTanaman(t) {
   return card;
 }
 
-// 3. Fungsi Navigasi Halaman
+// 3. Fungsi Navigasi Halaman (DIPERBAIKI: Menu "Katalog" dan "Kategori" dipisah tujuannya)
 function bukaHalaman(namaHalaman) {
   document.querySelectorAll('.halaman').forEach(h => h.classList.add('hidden'));
   
   if (namaHalaman === 'beranda') {
     document.getElementById('halaman-beranda').classList.remove('hidden');
-  } else if (namaHalaman === 'katalog' || namaHalaman === 'kategori') {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else if (namaHalaman === 'katalog') {
     document.getElementById('halaman-katalog').classList.remove('hidden');
-    renderKatalogLengkap();
+    renderKatalogLengkap(dataTanaman); // Menampilkan seluruh 50 data secara utuh
+    const inputCari = document.getElementById('inputCariKatalog');
+    if(inputCari) inputCari.value = ""; // Reset kotak pencarian
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else if (namaHalaman === 'kategori') {
+    // Menu "Manfaat & Kategori" diarahkan ke Beranda bagian kotak kategori lalu melakukan scroll
+    document.getElementById('halaman-beranda').classList.remove('hidden');
+    const bagianKategori = document.querySelector('.kategori-section');
+    if (bagianKategori) {
+      bagianKategori.scrollIntoView({ behavior: 'smooth' });
+    }
   } else if (namaHalaman === 'artikel') {
     document.getElementById('halaman-artikel').classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   } else if (namaHalaman === 'tentang') {
     document.getElementById('halaman-tentang').classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
 
-// 4. Fitur Filter & Pencarian
+// 4. Fitur Filter & Pencarian (Otomatis membuka halaman Katalog dengan isi yang terfilter)
 function filterKategori(jenis) {
-  bukaHalaman('katalog');
+  document.querySelectorAll('.halaman').forEach(h => h.classList.add('hidden'));
+  document.getElementById('halaman-katalog').classList.remove('hidden');
+  
   const hasil = dataTanaman.filter(t => t.jenis.toLowerCase().includes(jenis.toLowerCase()));
   renderKatalogLengkap(hasil);
+  
+  const inputCari = document.getElementById('inputCariKatalog');
+  if(inputCari) inputCari.value = "";
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function filterKeluhan(keluhan) {
-  bukaHalaman('katalog');
+  document.querySelectorAll('.halaman').forEach(h => h.classList.add('hidden'));
+  document.getElementById('halaman-katalog').classList.remove('hidden');
+  
   const hasil = dataTanaman.filter(t => t.keluhan.toLowerCase().includes(keluhan.toLowerCase()));
   renderKatalogLengkap(hasil);
+  
+  const inputCari = document.getElementById('inputCariKatalog');
+  if(inputCari) inputCari.value = "";
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function cariTanamanHero() {
