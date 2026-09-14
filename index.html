@@ -70,6 +70,26 @@
     </div>
   </div>
 
+  <!-- Halaman Manfaat & Kategori (DIPISAHKAN AGAR ISI BERBEDA) -->
+  <div id="halaman-kategori" class="halaman hidden container">
+    <br>
+    <h2>Eksplorasi Berdasarkan Manfaat & Kategori</h2>
+    <p style="margin-bottom: 20px; color: #4a5568;">Pilih kelompok jenis tanaman atau fokus keluhan kesehatan di bawah ini:</p>
+    
+    <div class="kategori-grid" style="margin-bottom: 30px;">
+      <div class="kategori-card" onclick="filterKategori('Daun')">🍃 Jenis: Daun</div>
+      <div class="kategori-card" onclick="filterKategori('Rimpang')">🫚 Jenis: Rimpang / Akar</div>
+      <div class="kategori-card" onclick="filterKategori('Buah')">🍋 Jenis: Buah / Bunga</div>
+      <div class="kategori-card" onclick="filterKeluhan('Pencernaan')">🩺 Keluhan: Pencernaan</div>
+      <div class="kategori-card" onclick="filterKeluhan('Imun')">🛡️ Keluhan: Daya Tahan</div>
+      <div class="kategori-card" onclick="filterKeluhan('Kulit')">✨ Keluhan: Kulit & Nyeri</div>
+    </div>
+
+    <div id="grid-hasil-kategori" class="grid-katalog">
+      <!-- Hasil filter dari menu kategori akan muncul secara spesifik di sini -->
+    </div>
+  </div>
+
   <!-- Halaman Artikel & Edukasi -->
   <div id="halaman-artikel" class="halaman hidden container">
     <br>
@@ -129,6 +149,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=4"></script>
+  <script src="script.js?v=5"></script>
 </body>
 </html>
