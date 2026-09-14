@@ -3,97 +3,222 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flora Nusantara - Khasiat Herbal Tradisional</title>
+  <title>FloraNusantara - Edukasi & Katalog Tanaman Obat Tradisional Indonesia</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- 1. Header & Navigasi Utama -->
+  <!-- HEADER / NAVBAR -->
   <header class="navbar">
-    <div class="logo">🌿 Flora Nusantara</div>
-    <nav class="nav-links">
-      <a href="#" onclick="bukaHalaman('beranda')">Beranda</a>
-      <a href="#" onclick="bukaHalaman('katalog')">Katalog Flora</a>
-      <a href="#" onclick="bukaHalaman('kategori')">Manfaat & Kategori</a>
-      <a href="#" onclick="bukaHalaman('artikel')">Artikel / Edukasi</a>
-      <a href="#" onclick="bukaHalaman('tentang')">Tentang Kami</a>
+    <div class="logo">🌿 FloraNusantara</div>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#beranda" onclick="bukaHalaman('beranda'); return false;">Beranda</a>
+      <a href="#katalog" onclick="bukaHalaman('katalog'); return false;">Katalog Flora</a>
+      <a href="#panduan" onclick="bukaHalaman('panduan'); return false;">Panduan Pengolahan</a>
+      <a href="#edukasi" onclick="bukaHalaman('edukasi'); return false;">Edukasi</a>
+      <a href="#tentang" onclick="bukaHalaman('tentang'); return false;">Tentang</a>
     </nav>
   </header>
 
-  <!-- Halaman Beranda Utama -->
+  <!-- ============ HALAMAN BERANDA ============ -->
   <div id="halaman-beranda" class="halaman">
-    
-    <!-- 2. Banner Utama (Hero Section) -->
     <section class="hero-section">
       <div class="hero-content">
-        <h1>Kembali ke Alam: Temukan Khasiat Herbal Tradisional untuk Kesehatan Anda</h1>
-        <p>Panduan terpercaya eksplorasi berbagai macam obat-obatan tradisional Nusantara.</p>
+        <h1>Kembali ke Alam: Khasiat Herbal Tradisional Nusantara</h1>
+        <p>Katalog, edukasi, dan panduan pengolahan tanaman obat tradisional Indonesia dalam satu platform.</p>
         <div class="search-hero">
-          <input type="text" id="inputCariHero" placeholder="Ketik nama tanaman atau keluhan (misal: Kunyit, Maag, Diare)..." onkeyup="cariTanamanHero()">
-          <button onclick="bukaHalaman('katalog')">Jelajahi Tanaman</button>
+          <input type="text" id="inputCariHero" placeholder="Cari tanaman atau keluhan (mis. Kunyit, Maag, Diare)..." onkeyup="cariTanamanHero(event)">
+          <button onclick="cariTanamanHero(event, true)">Jelajahi</button>
         </div>
       </div>
     </section>
 
-    <!-- 3. Pencarian Cepat Berdasarkan Kategori -->
     <section class="kategori-section container">
       <h2>Pencarian Cepat</h2>
       <div class="kategori-grid">
-        <div class="kategori-card" onclick="filterKategori('Daun')">🍃 Jenis: Daun</div>
-        <div class="kategori-card" onclick="filterKategori('Rimpang')">🫚 Jenis: Rimpang / Akar</div>
-        <div class="kategori-card" onclick="filterKategori('Buah')">🍋 Jenis: Buah / Bunga</div>
-        <div class="kategori-card" onclick="filterKeluhan('Pencernaan')">🩺 Keluhan: Pencernaan</div>
-        <div class="kategori-card" onclick="filterKeluhan('Imun')">🛡️ Keluhan: Daya Tahan</div>
-        <div class="kategori-card" onclick="filterKeluhan('Kulit')">✨ Keluhan: Kulit & Nyeri</div>
+        <div class="kategori-card" onclick="filterKategori('Daun')">🍃 Daun</div>
+        <div class="kategori-card" onclick="filterKategori('Rimpang')">🫚 Rimpang / Akar</div>
+        <div class="kategori-card" onclick="filterKategori('Buah')">🍋 Buah / Bunga</div>
+        <div class="kategori-card" onclick="filterKeluhan('Pencernaan')">🩺 Pencernaan</div>
+        <div class="kategori-card" onclick="filterKeluhan('Imun')">🛡️ Daya Tahan</div>
+        <div class="kategori-card" onclick="filterKeluhan('Kulit')">✨ Kulit & Nyeri</div>
       </div>
     </section>
 
-    <!-- 4. Katalog Flora Unggulan -->
     <section class="featured-section container">
       <h2>Katalog Flora Unggulan</h2>
-      <div id="grid-unggulan" class="grid-katalog">
-        <!-- Kartu tanaman unggulan akan dirender lewat JS -->
-      </div>
+      <div id="grid-unggulan" class="grid-katalog"></div>
     </section>
 
+    <section class="container panduan-teaser">
+      <h2>Panduan Pengolahan Populer</h2>
+      <div class="panduan-grid">
+        <div class="panduan-card" onclick="bukaHalaman('panduan')">
+          <div class="panduan-icon">🔥</div>
+          <h3>Metode Rebus (Decoction)</h3>
+          <p>Cara paling umum untuk rimpang & akar. Rebus 15–20 menit dengan air mendidih.</p>
+        </div>
+        <div class="panduan-card" onclick="bukaHalaman('panduan')">
+          <div class="panduan-icon">🍵</div>
+          <h3>Metode Seduh (Infusion)</h3>
+          <p>Cocok untuk daun & bunga kering. Seduh 5–10 menit dengan air panas.</p>
+        </div>
+        <div class="panduan-card" onclick="bukaHalaman('panduan')">
+          <div class="panduan-icon">🥣</div>
+          <h3>Metode Parut & Peras</h3>
+          <p>Untuk rimpang segar seperti kunyit & jahe. Parut, peras, saring airnya.</p>
+        </div>
+      </div>
+    </section>
   </div>
 
-  <!-- Halaman Katalog Lengkap -->
+  <!-- ============ HALAMAN KATALOG ============ -->
   <div id="halaman-katalog" class="halaman hidden container">
     <br>
-    <h2>Katalog Lengkap Obat Tradisional</h2>
-    <div class="search-bar-main">
-      <input type="text" id="inputCariKatalog" placeholder="Cari berdasarkan nama, latin, atau khasiat..." onkeyup="cariTanamanKatalog()">
+    <h2>Katalog Lengkap Tanaman Obat Tradisional</h2>
+    <div class="filter-bar">
+      <input type="text" id="inputCariKatalog" placeholder="Cari nama, latin, atau khasiat..." onkeyup="cariTanamanKatalog()">
+      <select id="filterJenis" onchange="terapkanFilter()">
+        <option value="">Semua Jenis</option>
+        <option value="Daun">Daun</option>
+        <option value="Rimpang">Rimpang / Akar</option>
+        <option value="Buah">Buah / Bunga</option>
+      </select>
+      <select id="filterKeluhanSelect" onchange="terapkanFilter()">
+        <option value="">Semua Keluhan</option>
+        <option value="Pencernaan">Pencernaan</option>
+        <option value="Imun">Daya Tahan</option>
+        <option value="Kulit">Kulit & Nyeri</option>
+      </select>
+      <button onclick="resetFilter()">Reset</button>
     </div>
-    <div id="grid-katalog-lengkap" class="grid-katalog">
-      <!-- 50 tanaman akan dirender di sini -->
+    <p id="infoHasil" class="info-hasil"></p>
+    <div id="grid-katalog-lengkap" class="grid-katalog"></div>
+  </div>
+
+  <!-- ============ HALAMAN PANDUAN ============ -->
+  <div id="halaman-panduan" class="halaman hidden container">
+    <br>
+    <h2>Panduan Pengolahan Tanaman Obat</h2>
+    <p class="intro-text">Panduan praktis mengolah tanaman obat tradisional Indonesia agar khasiatnya maksimal dan aman dikonsumsi.</p>
+
+    <div class="panduan-detail">
+      <div class="panduan-item">
+        <h3>🔥 1. Metode Rebus (Decoction)</h3>
+        <p><b>Cocok untuk:</b> Rimpang (kunyit, jahe, temulawak), akar, batang, dan kulit kayu.</p>
+        <p><b>Langkah:</b></p>
+        <ol>
+          <li>Cuci bersih bahan, potong/geprek agar sari keluar.</li>
+          <li>Masukkan ke panci <b>tanah liat, kaca, atau stainless</b> (hindari aluminium).</li>
+          <li>Tambahkan air 2–3 gelas, rebus hingga tersisa 1 gelas.</li>
+          <li>Saring, dinginkan, minum 1–2 kali sehari.</li>
+        </ol>
+      </div>
+
+      <div class="panduan-item">
+        <h3>🍵 2. Metode Seduh (Infusion)</h3>
+        <p><b>Cocok untuk:</b> Daun dan bunga kering (bunga telang, daun sirsak, kumis kucing).</p>
+        <p><b>Langkah:</b></p>
+        <ol>
+          <li>Keringkan bahan di tempat teduh (bukan sinar matahari langsung).</li>
+          <li>Ambil 1 sdm bahan kering, masukkan ke cangkir.</li>
+          <li>Seduh dengan air panas 90–100°C, tutup 5–10 menit.</li>
+          <li>Saring dan minum selagi hangat.</li>
+        </ol>
+      </div>
+
+      <div class="panduan-item">
+        <h3>🥣 3. Metode Parut & Peras</h3>
+        <p><b>Cocok untuk:</b> Rimpang segar (kunyit, jahe, kencur, temulawak).</p>
+        <p><b>Langkah:</b></p>
+        <ol>
+          <li>Cuci bersih, kupas kulit luar.</li>
+          <li>Parut halus atau blender dengan sedikit air.</li>
+          <li>Peras dan saring airnya.</li>
+          <li>Minum langsung atau campur madu/air hangat.</li>
+        </ol>
+      </div>
+
+      <div class="panduan-item">
+        <h3>💧 4. Metode Pemakaian Luar (Topikal)</h3>
+        <p><b>Cocok untuk:</b> Daun sirih, lidah buaya, daun binahong, daun srikaya.</p>
+        <p><b>Langkah:</b></p>
+        <ol>
+          <li>Cuci bersih bahan segar.</li>
+          <li>Tumbuk/lumatkan hingga keluar lendir atau sari.</li>
+          <li>Oleskan/tempelkan pada area yang dituju.</li>
+          <li>Biarkan 15–30 menit, bilas dengan air bersih.</li>
+        </ol>
+      </div>
+
+      <div class="panduan-item">
+        <h3>🌿 5. Dikonsumsi Segar (Lalapan)</h3>
+        <p><b>Cocok untuk:</b> Daun pegagan, daun sambung nyawa, daun kemangi, daun katuk (matang).</p>
+        <p><b>Langkah:</b></p>
+        <ol>
+          <li>Pilih daun muda yang masih segar.</li>
+          <li>Cuci bersih dengan air mengalir.</li>
+          <li>Konsumsi langsung 3–5 lembar per hari.</li>
+          <li>Pastikan tidak ada pestisida atau kotoran.</li>
+        </ol>
+      </div>
+
+      <div class="panduan-item">
+        <h3>💊 6. Dijadikan Bubuk / Kapsul</h3>
+        <p><b>Cocok untuk:</b> Temulawak, kunyit, pasak bumi, mahkota dewa.</p>
+        <p><b>Langkah:</b></p>
+        <ol>
+          <li>Iris tipis bahan, keringkan dengan oven/angin.</li>
+          <li>Blender hingga jadi bubuk halus.</li>
+          <li>Simpan dalam wadah kedap udara.</li>
+          <li>Seduh 1/2–1 sdt bubuk dengan air panas, atau masukkan ke kapsul kosong.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="tips-box">
+      <h3>💡 Tips Penting Pengolahan Herbal</h3>
+      <ul>
+        <li>Hindari wadah <b>aluminium</b> — dapat bereaksi dengan senyawa aktif tanaman.</li>
+        <li>Gunakan air matang atau air mineral, bukan air mentah.</li>
+        <li>Rebusan herbal sebaiknya diminum <b>hari itu juga</b>, tidak disimpan lebih dari 24 jam.</li>
+        <li>Tambahkan <b>madu</b> alih-alih gula pasir untuk pemanis alami.</li>
+        <li>Konsultasikan ke dokter/herbalis jika sedang mengonsumsi obat medis.</li>
+      </ul>
     </div>
   </div>
 
-  <!-- Halaman Artikel & Edukasi -->
-  <div id="halaman-artikel" class="halaman hidden container">
+  <!-- ============ HALAMAN EDUKASI ============ -->
+  <div id="halaman-edukasi" class="halaman hidden container">
     <br>
     <h2>Artikel & Edukasi Sehat Alami</h2>
     <div class="artikel-grid">
       <article class="artikel-card">
-        <h3>Sejarah Tradisi Jamu Nusantara</h3>
-        <p>Menelusuri jejak pengobatan herbal sejak zaman kerajaan kuno hingga menjadi warisan budaya takbenda.</p>
+        <h3>📜 Sejarah Tradisi Jamu Nusantara</h3>
+        <p>Menelusuri jejak pengobatan herbal sejak zaman kerajaan kuno hingga menjadi warisan budaya takbenda UNESCO.</p>
       </article>
       <article class="artikel-card">
-        <h3>Tips Merebus Herbal yang Benar</h3>
+        <h3>♨️ Tips Merebus Herbal yang Benar</h3>
         <p>Hindari panci alumunium! Gunakan wadah tanah liat atau kaca agar kandungan aktif herbal tidak rusak.</p>
+      </article>
+      <article class="artikel-card">
+        <h3>🌱 Membuat Apotek Hidup di Rumah</h3>
+        <p>Cukup 1 meter persegi, Anda bisa menanam 10 tanaman obat keluarga (TOGA) yang bermanfaat sehari-hari.</p>
+      </article>
+      <article class="artikel-card">
+        <h3>⚠️ Mitos vs Fakta Herbal</h3>
+        <p>Benarkah herbal tanpa efek samping? Simak penjelasan ilmiah tentang keamanan konsumsi jamu harian.</p>
       </article>
     </div>
 
-    <!-- Penambahan Video YouTube -->
-    <div class="video-section" style="margin-top: 40px; background: #f9f9f9; padding: 20px; border-radius: 8px;">
+    <div class="video-section">
       <h3>📹 Tontonan Video Edukasi: 15 Tanaman Herbal untuk Apotek Hidup</h3>
-      <p style="margin-bottom: 15px; color: #555;">Simak panduan lengkap merawat tanaman obat pekarangan rumah.</p>
-      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 8px;">
+      <p>Simak panduan lengkap merawat tanaman obat pekarangan rumah.</p>
+      <div class="video-wrapper">
         <iframe 
-          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
           src="https://www.youtube.com/embed/4YylnkqlAaA" 
-          title="Wajib Punya! 15 Tanaman Herbal untuk Apotek Hidup di Rumah" 
+          title="15 Tanaman Herbal untuk Apotek Hidup"
           frameborder="0" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
           allowfullscreen>
@@ -102,33 +227,42 @@
     </div>
   </div>
 
-  <!-- Halaman Tentang Kami -->
+  <!-- ============ HALAMAN TENTANG ============ -->
   <div id="halaman-tentang" class="halaman hidden container">
     <br>
-    <h2>Tentang Flora Nusantara</h2>
-    <p>Flora Nusantara adalah platform edukasi independen yang bertujuan melestarikan pengetahuan kekayaan tanaman obat tradisional Indonesia secara ilmiah dan terstruktur.</p>
+    <h2>Tentang FloraNusantara</h2>
+    <div class="tentang-box">
+      <p><b>FloraNusantara</b> adalah platform edukasi independen yang bertujuan melestarikan pengetahuan tanaman obat tradisional Indonesia secara ilmiah, terstruktur, dan mudah diakses.</p>
+      <p>Kami menyajikan <b>katalog 50+ tanaman obat</b>, <b>panduan pengolahan</b>, serta <b>artikel edukasi</b> yang dapat dijadikan referensi keluarga Indonesia.</p>
+      <h3>🎯 Misi Kami</h3>
+      <ul>
+        <li>Mendokumentasikan kekayaan flora obat Nusantara.</li>
+        <li>Menyajikan informasi berbasis riset dan pengalaman tradisional.</li>
+        <li>Mengedukasi masyarakat tentang pengolahan yang benar dan aman.</li>
+      </ul>
+      <h3>📬 Kontak</h3>
+      <p>Email: <a href="mailto:info@floranusantara.id">info@floranusantara.id</a></p>
+    </div>
   </div>
 
-  <!-- 5. Modal Detail Tanaman (Saat Kartu Di-klik) -->
+  <!-- MODAL DETAIL TANAMAN -->
   <div id="modalDetail" class="modal hidden">
     <div class="modal-content">
       <span class="close-btn" onclick="tutupModal()">&times;</span>
-      <div id="isiDetailTanaman">
-        <!-- Detail tanaman lengkap disajikan di sini -->
-      </div>
+      <div id="isiDetailTanaman"></div>
     </div>
   </div>
 
-  <!-- 7. Penafian Hukum (Disclaimer) & Footer -->
+  <!-- FOOTER -->
   <footer>
     <div class="disclaimer-box container">
-      <strong>⚠️ Penafian Hukum (Disclaimer):</strong> Informasi yang disajikan di situs ini bertujuan semata-mata untuk edukasi dan tidak dimaksudkan sebagai pengganti diagnosis, perawatan, atau saran medis dari dokter profesional.
+      <strong>⚠️ Penafian Hukum (Disclaimer):</strong> Informasi di situs ini bertujuan semata-mata untuk edukasi dan tidak dimaksudkan sebagai pengganti diagnosis, perawatan, atau saran medis dari dokter profesional.
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Flora Nusantara. All Rights Reserved. | Kebijakan Privasi | Kontak Kami</p>
+      <p>&copy; 2026 FloraNusantara. All Rights Reserved. | <a href="#tentang" onclick="bukaHalaman('tentang'); return false;">Kebijakan Privasi</a> | <a href="#tentang" onclick="bukaHalaman('tentang'); return false;">Kontak Kami</a></p>
     </div>
   </footer>
 
-  <script src="script.js?v=4"></script>
+  <script src="script.js?v=5"></script>
 </body>
 </html>
