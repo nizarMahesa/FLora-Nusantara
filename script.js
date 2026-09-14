@@ -1,4 +1,4 @@
-// Database 50 Tanaman Obat Tradisional Asli Indonesia (Tanpa Gambar, Tata Letak Kolom Rapih)
+// ============ DATABASE 50 TANAMAN OBAT TRADISIONAL INDONESIA ============
 const dataTanaman = [
   { id: 1, nama: "Kunyit", latin: "Curcuma longa", jenis: "Rimpang", keluhan: "Pencernaan", kandungan: "Kurkumin, minyak atsiri, desmetoksikurkumin", khasiat: "Meredakan asam lambung, antiinflamasi, menjaga pencernaan.", pengolahan: "Parut 2 ruas kunyit, rebus dengan 1 gelas air hingga mendidih, saring dan minum.", peringatan: "Hindari konsumsi berlebih pada pasien batu empedu." },
   { id: 2, nama: "Jahe Merah", latin: "Zingiber officinale var. rubrum", jenis: "Rimpang", keluhan: "Imun", kandungan: "Gingerol, shogaol, zingeron", khasiat: "Menghangatkan tubuh, meredakan batuk & pegal linu.", pengolahan: "Geprek 1 ruas jahe merah, seduh dengan air panas dan madu.", peringatan: "Hati-hati bagi penderita pendarahan atau masalah lambung kronis." },
@@ -52,137 +52,177 @@ const dataTanaman = [
   { id: 50, nama: "Buah Parijoto", latin: "Medinilla magnifica", jenis: "Buah", keluhan: "Imun", kandungan: "Kalsium, antioksidan, flavonoid, saponin", khasiat: "Menjaga stamina ibu hamil dan membantu meningkatkan kesuburan.", pengolahan: "Cuci bersih buah parijoto segar, lalu dikonsumsi langsung.", peringatan: "Konsumsi secukupnya dalam batas wajar." }
 ];
 
-// 1. Render Katalog Unggulan di Beranda (Top 6)
+// ============ GAMBAR PER JENIS (Unsplash keyword) ============
+const gambarPerJenis = {
+  "Daun":   "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=600&q=70",
+  "Rimpang":"https://images.unsplash.com/photo-1615485500704-8e990f9900f7?auto=format&fit=crop&w=600&q=70",
+  "Buah":   "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=600&q=70"
+};
+
+function getGambar(t) {
+  return gambarPerJenis[t.jenis] || gambarPerJenis["Daun"];
+}
+
+// ============ RENDER KATALOG UNGGULAN ============
 function renderUnggulan() {
   const container = document.getElementById('grid-unggulan');
-  if(!container) return;
+  if (!container) return;
   container.innerHTML = '';
-  dataTanaman.slice(0, 6).forEach(t => {
-    container.appendChild(buatKartuTanaman(t));
-  });
+  dataTanaman.slice(0, 6).forEach(t => container.appendChild(buatKartuTanaman(t)));
 }
 
-// 2. Render Katalog Lengkap (50 Tanaman) dengan Tata Letak Kolom Rapih (Kiri ke Kanan)
+// ============ RENDER KATALOG LENGKAP ============
 function renderKatalogLengkap(list = dataTanaman) {
   const container = document.getElementById('grid-katalog-lengkap');
-  if(!container) return;
-  
-  // Memaksa penataan grid dari kiri ke kanan dengan !important agar berjejer rapi
-  container.style.cssText = "display: grid !important; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important; gap: 20px !important; width: 100% !important;";
-  
+  if (!container) return;
   container.innerHTML = '';
-  list.forEach(t => {
-    container.appendChild(buatKartuTanaman(t));
-  });
+
+  const info = document.getElementById('infoHasil');
+  if (info) info.textContent = `Menampilkan ${list.length} dari ${dataTanaman.length} tanaman.`;
+
+  if (list.length === 0) {
+    container.innerHTML = `<p style="grid-column:1/-1; text-align:center; padding:40px; color:#718096;">😕 Tidak ada tanaman yang cocok dengan pencarian Anda.</p>`;
+    return;
+  }
+
+  list.forEach(t => container.appendChild(buatKartuTanaman(t)));
 }
 
-// Helper: Komponen Kartu Tanpa Gambar dengan Tata Letak Kolom Rapih
+// ============ KOMPONEN KARTU ============
 function buatKartuTanaman(t) {
   const card = document.createElement('div');
   card.className = 'card-flora';
-  card.style.cssText = "background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 18px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; justify-content: space-between;";
-  
-  card.onmouseover = () => {
-    card.style.transform = "translateY(-3px)";
-    card.style.boxShadow = "0 6px 12px rgba(0,0,0,0.08)";
-  };
-  card.onmouseout = () => {
-    card.style.transform = "translateY(0)";
-    card.style.boxShadow = "0 2px 4px rgba(0,0,0,0.02)";
-  };
-
   card.onclick = () => bukaDetail(t.id);
-  
+
   card.innerHTML = `
-    <div>
-      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
-        <h3 style="margin: 0; font-size: 1.1rem; color: #2d3748;">${t.id}. ${t.nama}</h3>
-        <span style="font-size: 0.75rem; background: #edf2f7; color: #4a5568; padding: 2px 8px; border-radius: 12px; font-weight: 500;">${t.jenis}</span>
+    <div class="card-img" style="background-image: url('${getGambar(t)}');"></div>
+    <div class="card-body">
+      <div class="card-header">
+        <h3>${t.id}. ${t.nama}</h3>
+        <span class="badge">${t.jenis}</span>
       </div>
-      <p style="margin: 0 0 10px 0; font-style: italic; font-size: 0.85rem; color: #718096;">${t.latin}</p>
-      <p style="margin: 0; font-size: 0.9rem; color: #4a5568; line-height: 1.4;"><b>Khasiat:</b> ${t.khasiat.length > 75 ? t.khasiat.substring(0, 75) + '...' : t.khasiat}</p>
-    </div>
-    <div style="margin-top: 12px; padding-top: 8px; border-top: 1px dashed #edf2f7; font-size: 0.8rem; color: #3182ce; font-weight: 600;">
-      Lihat Detail &rarr;
+      <p class="latin">${t.latin}</p>
+      <p class="khasiat"><b>Khasiat:</b> ${t.khasiat.length > 90 ? t.khasiat.substring(0,90) + '...' : t.khasiat}</p>
+      <div class="card-cta">Lihat Detail &rarr;</div>
     </div>
   `;
   return card;
 }
 
-// 3. Fungsi Navigasi Halaman
+// ============ NAVIGASI HALAMAN ============
 function bukaHalaman(namaHalaman) {
   document.querySelectorAll('.halaman').forEach(h => h.classList.add('hidden'));
-  
+
   if (namaHalaman === 'beranda') {
     document.getElementById('halaman-beranda').classList.remove('hidden');
-  } else if (namaHalaman === 'katalog' || namaHalaman === 'kategori') {
+  } else if (namaHalaman === 'katalog') {
     document.getElementById('halaman-katalog').classList.remove('hidden');
     renderKatalogLengkap();
-  } else if (namaHalaman === 'artikel') {
-    document.getElementById('halaman-artikel').classList.remove('hidden');
+  } else if (namaHalaman === 'panduan') {
+    document.getElementById('halaman-panduan').classList.remove('hidden');
+  } else if (namaHalaman === 'edukasi' || namaHalaman === 'artikel') {
+    document.getElementById('halaman-edukasi').classList.remove('hidden');
   } else if (namaHalaman === 'tentang') {
     document.getElementById('halaman-tentang').classList.remove('hidden');
   }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // tutup menu mobile jika terbuka
+  document.getElementById('navLinks').classList.remove('open');
 }
 
-// 4. Fitur Filter & Pencarian
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+// ============ FILTER & PENCARIAN ============
 function filterKategori(jenis) {
   bukaHalaman('katalog');
-  const hasil = dataTanaman.filter(t => t.jenis.toLowerCase().includes(jenis.toLowerCase()));
-  renderKatalogLengkap(hasil);
+  document.getElementById('inputCariKatalog').value = '';
+  document.getElementById('filterJenis').value = jenis;
+  document.getElementById('filterKeluhanSelect').value = '';
+  terapkanFilter();
 }
 
 function filterKeluhan(keluhan) {
   bukaHalaman('katalog');
-  const hasil = dataTanaman.filter(t => t.keluhan.toLowerCase().includes(keluhan.toLowerCase()));
-  renderKatalogLengkap(hasil);
+  document.getElementById('inputCariKatalog').value = '';
+  document.getElementById('filterJenis').value = '';
+  document.getElementById('filterKeluhanSelect').value = keluhan;
+  terapkanFilter();
 }
 
-function cariTanamanHero() {
-  const q = document.getElementById('inputCariHero').value.toLowerCase();
-  bukaHalaman('katalog');
-  document.getElementById('inputCariKatalog').value = q;
-  cariTanamanKatalog();
+function terapkanFilter() {
+  const q = document.getElementById('inputCariKatalog').value.toLowerCase().trim();
+  const jenis = document.getElementById('filterJenis').value;
+  const keluhan = document.getElementById('filterKeluhanSelect').value;
+
+  const hasil = dataTanaman.filter(t => {
+    const cocokQ = !q || t.nama.toLowerCase().includes(q) || t.latin.toLowerCase().includes(q) || t.khasiat.toLowerCase().includes(q);
+    const cocokJenis = !jenis || t.jenis === jenis;
+    const cocokKeluhan = !keluhan || t.keluhan === keluhan;
+    return cocokQ && cocokJenis && cocokKeluhan;
+  });
+
+  renderKatalogLengkap(hasil);
 }
 
 function cariTanamanKatalog() {
-  const q = document.getElementById('inputCariKatalog').value.toLowerCase();
-  const hasil = dataTanaman.filter(t => 
-    t.nama.toLowerCase().includes(q) || 
-    t.latin.toLowerCase().includes(q) ||
-    t.khasiat.toLowerCase().includes(q)
-  );
-  renderKatalogLengkap(hasil);
+  terapkanFilter();
 }
 
-// 5. Modal Detail Tanaman Terstruktur
+function resetFilter() {
+  document.getElementById('inputCariKatalog').value = '';
+  document.getElementById('filterJenis').value = '';
+  document.getElementById('filterKeluhanSelect').value = '';
+  renderKatalogLengkap();
+}
+
+function cariTanamanHero(event, paksa) {
+  const q = document.getElementById('inputCariHero').value.toLowerCase().trim();
+  if (event && event.key !== 'Enter' && !paksa) return;
+  if (!q && !paksa) return;
+
+  bukaHalaman('katalog');
+  document.getElementById('inputCariKatalog').value = q;
+  document.getElementById('filterJenis').value = '';
+  document.getElementById('filterKeluhanSelect').value = '';
+  terapkanFilter();
+}
+
+// ============ MODAL DETAIL ============
 function bukaDetail(id) {
   const t = dataTanaman.find(item => item.id === id);
   if (!t) return;
-  
+
   const isi = document.getElementById('isiDetailTanaman');
   isi.innerHTML = `
-    <h2 style="margin-top:0; color: #2d3748;">${t.nama}</h2>
-    <p style="font-style: italic; color: #718096; margin-top: -5px;">${t.latin} • <span style="color:#3182ce;">${t.jenis}</span></p>
-    
-    <div style="background: #f7fafc; padding: 12px; border-radius: 6px; margin-bottom: 10px;">
+    <div class="modal-header-img" style="background-image: url('${getGambar(t)}');"></div>
+    <h2 style="margin-top:0; color:#1b4332;">${t.nama}</h2>
+    <p style="font-style: italic; color:#718096; margin-top:-5px; margin-bottom:15px;">
+      ${t.latin} • <span style="color:#2d6a4f; font-weight:600;">${t.jenis}</span> • 
+      <span style="color:#3182ce;">${t.keluhan}</span>
+    </p>
+
+    <div class="detail-box">
       <strong>🧪 Kandungan Kimia/Alami:</strong>
-      <p style="margin: 4px 0 0 0; color: #4a5568;">${t.kandungan}</p>
+      <p>${t.kandungan}</p>
     </div>
 
-    <div style="background: #f7fafc; padding: 12px; border-radius: 6px; margin-bottom: 10px;">
+    <div class="detail-box">
       <strong>✨ Khasiat Utama:</strong>
-      <p style="margin: 4px 0 0 0; color: #4a5568;">${t.khasiat}</p>
+      <p>${t.khasiat}</p>
     </div>
 
-    <div style="background: #f7fafc; padding: 12px; border-radius: 6px; margin-bottom: 10px;">
+    <div class="detail-box">
       <strong>☕ Cara Pengolahan / Resep Tradisional:</strong>
-      <p style="margin: 4px 0 0 0; color: #4a5568;">${t.pengolahan}</p>
+      <p>${t.pengolahan}</p>
     </div>
 
-    <div style="background: #fff5f5; border-left: 4px solid #e53e3e; padding: 12px; border-radius: 0 6px 6px 0;">
-      <strong style="color: #c53030;">⚠️ Peringatan & Efek Samping:</strong>
-      <p style="margin: 4px 0 0 0; color: #742a2a;">${t.peringatan}</p>
+    <div class="warning-box">
+      <strong>⚠️ Peringatan & Efek Samping:</strong>
+      <p>${t.peringatan}</p>
     </div>
   `;
   document.getElementById('modalDetail').classList.remove('hidden');
@@ -192,5 +232,13 @@ function tutupModal() {
   document.getElementById('modalDetail').classList.add('hidden');
 }
 
-// Inisialisasi awal saat script dimuat
-renderUnggulan();
+// Tutup modal jika klik area luar
+document.addEventListener('click', (e) => {
+  const modal = document.getElementById('modalDetail');
+  if (e.target === modal) tutupModal();
+});
+
+// ============ INISIALISASI ============
+document.addEventListener('DOMContentLoaded', () => {
+  renderUnggulan();
+});
