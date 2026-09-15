@@ -500,3 +500,105 @@ footer {
   .filter-bar { flex-direction: column; }
   .filter-bar input, .filter-bar select, .filter-bar button { width: 100%; }
 }
+
+/* ============ BACKGROUND GAMBAR PER HALAMAN ============ */
+
+/* Background untuk HALAMAN BERANDA */
+#halaman-beranda {
+  background: 
+    linear-gradient(rgba(249, 251, 249, 0.92), rgba(249, 251, 249, 0.95)),
+    url('https://images.unsplash.com/photo-1466781783364-36c955e42a7f?auto=format&fit=crop&w=1600&q=80') center/cover fixed;
+  min-height: 100vh;
+}
+
+/* Background untuk HALAMAN KATALOG */
+#halaman-katalog {
+  background: 
+    linear-gradient(rgba(249, 251, 249, 0.94), rgba(249, 251, 249, 0.96)),
+    url('https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=1600&q=80') center/cover fixed;
+  min-height: 100vh;
+}
+
+/* Background untuk HALAMAN PANDUAN */
+#halaman-panduan {
+  background: 
+    linear-gradient(rgba(249, 251, 249, 0.93), rgba(249, 251, 249, 0.95)),
+    url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1600&q=80') center/cover fixed;
+  min-height: 100vh;
+}
+
+/* Background untuk HALAMAN EDUKASI */
+#halaman-edukasi {
+  background: 
+    linear-gradient(rgba(249, 251, 249, 0.93), rgba(249, 251, 249, 0.95)),
+    url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=80') center/cover fixed;
+  min-height: 100vh;
+}
+
+/* Background untuk HALAMAN TENTANG */
+#halaman-tentang {
+  background: 
+    linear-gradient(rgba(249, 251, 249, 0.93), rgba(249, 251, 249, 0.95)),
+    url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=80') center/cover fixed;
+  min-height: 100vh;
+}
+
+/* Background untuk HALAMAN KONTAK */
+#halaman-kontak {
+  background: 
+    linear-gradient(rgba(249, 251, 249, 0.93), rgba(249, 251, 249, 0.95)),
+    url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&w=1600&q=80') center/cover fixed;
+  min-height: 100vh;
+}
+
+/* Background untuk MODAL DETAIL TANAMAN */
+#modalDetail {
+  background: 
+    linear-gradient(rgba(27, 67, 50, 0.85), rgba(45, 106, 79, 0.85)),
+    url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=1600&q=80') center/cover fixed;
+}
+
+/* Transparansi konten agar background terlihat */
+#halaman-beranda .container,
+#halaman-katalog .container,
+#halaman-panduan .container,
+#halaman-edukasi .container,
+#halaman-tentang .container,
+#halaman-kontak .container {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 14px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 25px;
+  box-shadow: 0 8px 24px rgba(27, 67, 50, 0.08);
+}
+
+/* Khusus beranda, hero tetap full-width tanpa container */
+#halaman-beranda .hero-section {
+  border-radius: 0;
+  margin: 0;
+}
+
+/* Card transparan lebih halus */
+.card-flora,
+.artikel-card,
+.panduan-item,
+.tentang-box {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(4px);
+}
+
+/* Responsive: matikan fixed background di mobile agar performa ringan */
+@media (max-width: 768px) {
+  #halaman-beranda,
+  #halaman-katalog,
+  #halaman-panduan,
+  #halaman-edukasi,
+  #halaman-tentang,
+  #halaman-kontak,
+  #modalDetail {
+    background-attachment: scroll;
+  }
+}
