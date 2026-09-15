@@ -18,6 +18,7 @@
       <a href="#panduan" onclick="bukaHalaman('panduan'); return false;">Panduan Pengolahan</a>
       <a href="#edukasi" onclick="bukaHalaman('edukasi'); return false;">Edukasi</a>
       <a href="#tentang" onclick="bukaHalaman('tentang'); return false;">Tentang</a>
+      <a href="#kontak" onclick="bukaHalaman('kontak'); return false;">Kontak</a>
     </nav>
   </header>
 
@@ -245,6 +246,42 @@
     </div>
   </div>
 
+  <!-- ============ HALAMAN KONTAK (HALAMAN KE-6) ============ -->
+  <div id="halaman-kontak" class="halaman hidden container">
+    <br>
+    <h2>Hubungi Kami</h2>
+    <p class="intro-text">Punya pertanyaan, saran, atau ingin berkontribusi untuk FloraNusantara? Kirimkan pesan Anda melalui formulir di bawah ini.</p>
+
+    <div class="tentang-box">
+      <h3>📬 Formulir Pesan</h3>
+      <form onsubmit="kirimPesan(event)" style="display:flex; flex-direction:column; gap:12px; margin-top:10px;">
+        <input type="text" id="kontakNama" placeholder="Nama Lengkap" required
+               style="padding:12px 14px; border-radius:6px; border:1px solid #cbd5e0; font-size:0.95rem; outline:none;">
+        <input type="email" id="kontakEmail" placeholder="Alamat Email" required
+               style="padding:12px 14px; border-radius:6px; border:1px solid #cbd5e0; font-size:0.95rem; outline:none;">
+        <input type="text" id="kontakSubjek" placeholder="Subjek Pesan" required
+               style="padding:12px 14px; border-radius:6px; border:1px solid #cbd5e0; font-size:0.95rem; outline:none;">
+        <textarea id="kontakPesan" placeholder="Tulis pesan Anda di sini..." rows="5" required
+                  style="padding:12px 14px; border-radius:6px; border:1px solid #cbd5e0; font-size:0.95rem; outline:none; resize:vertical;"></textarea>
+        <button type="submit"
+                style="padding:12px 20px; background:#2d6a4f; color:white; border:none; border-radius:6px; font-weight:600; cursor:pointer; align-self:flex-start;">
+          Kirim Pesan
+        </button>
+      </form>
+      <p id="pesanSukses" style="display:none; margin-top:15px; padding:12px; background:#d8f3dc; color:#1b4332; border-radius:6px; font-weight:600;">
+        ✅ Terima kasih! Pesan Anda telah kami terima.
+      </p>
+
+      <h3 style="margin-top:25px;">📍 Informasi Kontak</h3>
+      <ul>
+        <li><b>Email:</b> <a href="mailto:info@floranusantara.id">info@floranusantara.id</a></li>
+        <li><b>Telepon:</b> +62 812-3456-7890</li>
+        <li><b>Alamat:</b> Jl. Herbal Nusantara No. 10, Yogyakarta, Indonesia</li>
+        <li><b>Jam Operasional:</b> Senin – Jumat, 09.00 – 17.00 WIB</li>
+      </ul>
+    </div>
+  </div>
+
   <!-- MODAL DETAIL TANAMAN -->
   <div id="modalDetail" class="modal hidden">
     <div class="modal-content">
@@ -259,7 +296,7 @@
       <strong>⚠️ Penafian Hukum (Disclaimer):</strong> Informasi di situs ini bertujuan semata-mata untuk edukasi dan tidak dimaksudkan sebagai pengganti diagnosis, perawatan, atau saran medis dari dokter profesional.
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 FloraNusantara. All Rights Reserved. | <a href="#tentang" onclick="bukaHalaman('tentang'); return false;">Kebijakan Privasi</a> | <a href="#tentang" onclick="bukaHalaman('tentang'); return false;">Kontak Kami</a></p>
+      <p>&copy; 2026 FloraNusantara. All Rights Reserved. | <a href="#tentang" onclick="bukaHalaman('tentang'); return false;">Kebijakan Privasi</a> | <a href="#kontak" onclick="bukaHalaman('kontak'); return false;">Kontak Kami</a></p>
     </div>
   </footer>
 
