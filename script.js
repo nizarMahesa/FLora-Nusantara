@@ -124,6 +124,8 @@ function bukaHalaman(namaHalaman) {
     document.getElementById('halaman-edukasi').classList.remove('hidden');
   } else if (namaHalaman === 'tentang') {
     document.getElementById('halaman-tentang').classList.remove('hidden');
+  } else if (namaHalaman === 'kontak') {
+    document.getElementById('halaman-kontak').classList.remove('hidden');
   }
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -237,6 +239,41 @@ document.addEventListener('click', (e) => {
   const modal = document.getElementById('modalDetail');
   if (e.target === modal) tutupModal();
 });
+// ============ BACKGROUND DINAMIS MODAL SESUAI JENIS TANAMAN ============
+function setModalBackground(jenis) {
+  const modal = document.getElementById('modalDetail');
+  const bgPerJenis = {
+    "Daun": "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=1600&q=80",
+    "Rimpang": "https://images.unsplash.com/photo-1615485500704-8e990f9900f7?auto=format&fit=crop&w=1600&q=80",
+    "Buah": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=1600&q=80"
+  };
+  const url = bgPerJenis[jenis] || bgPerJenis["Daun"];
+  modal.style.background = `linear-gradient(rgba(27, 67, 50, 0.88), rgba(45, 106, 79, 0.88)), url('${url}') center/cover fixed`;
+}
+
+// ============ HANDLER FORM KONTAK ============
+function kirimPesan(event) {
+  event.preventDefault();
+  const nama = document.getElementById('kontakNama').value.trim();
+  const email = document.getElementById('kontakEmail').value.trim();
+  const subjek = document.getElementById('kontakSubjek').value.trim();
+  const pesan = document.getElementById('kontakPesan').value.trim();
+
+  if (!nama || !email || !subjek || !pesan) {
+    alert('Mohon lengkapi semua kolom terlebih dahulu.');
+    return;
+  }
+
+  // Reset form & tampilkan notifikasi sukses
+  document.getElementById('kontakNama').value = '';
+  document.getElementById('kontakEmail').value = '';
+  document.getElementById('kontakSubjek').value = '';
+  document.getElementById('kontakPesan').value = '';
+
+  const notif = document.getElementById('pesanSukses');
+  notif.style.display = 'block';
+  setTimeout(() => { notif.style.display = 'none'; }, 4000);
+}
 
 // ============ INISIALISASI ============
 document.addEventListener('DOMContentLoaded', () => {
